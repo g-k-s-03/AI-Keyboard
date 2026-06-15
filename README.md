@@ -4,7 +4,6 @@
 <!-- Organization Logo -->
 <div align="center" style="display: flex; align-items: center; justify-content: center; gap: 16px;">
   <img alt="AOSSIE" src="public/aossie-logo.svg" width="175">
-  <img src="public/ai-keyboard-logo.svg" width="175" />
 </div>
 
 &nbsp;
@@ -124,12 +123,10 @@ Coming soon. Architecture and setup guide will be added once the initial build i
 ## 📱 UI Screens
 
 **Keyboard UI**
-
-![Keyboard UI](docs/assets/keyboard-ui.png)
+![Keyboard UI](assets/images/keyboard-ui.png)
 
 **Companion App**
-
-![Companion App](docs/assets/companion-app.png)
+![Companion App](assets/images/companion-app.png)
 
 Full designs → [Figma](https://www.figma.com/design/UIR2HswyoRBGrWoD3QXmUg/ai-keyboard-designe)
 
@@ -152,7 +149,7 @@ Thank you for considering contributing to AI Keyboard! Contributions are highly 
 
 ## 📍 License
 
-This project is licensed under the MIT License.
+This project is licensed under the GNU General Public License v3.0.
 See the [LICENSE](LICENSE) file for details.
 
 ---
