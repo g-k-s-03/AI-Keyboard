@@ -4,7 +4,7 @@
 <!-- Organization Logo -->
 <div align="center" style="display: flex; align-items: center; justify-content: center; gap: 16px;">
   <img alt="AOSSIE" src="public/aossie-logo.svg" width="175">
-  <img src="public/todo-project-logo.svg" width="175" />
+  <img src="public/ai-keyboard-logo.svg" width="175" />
 </div>
 
 &nbsp;
@@ -12,9 +12,7 @@
 <!-- Organization Name -->
 <div align="center">
 
-[![Static Badge](https://img.shields.io/badge/aossie.org/TODO-228B22?style=for-the-badge&labelColor=FFC517)](https://TODO.aossie.org/)
-
-<!-- Correct deployed url to be added -->
+[![Static Badge](https://img.shields.io/badge/aossie.org/AI--Keyboard-228B22?style=for-the-badge&labelColor=6E44FF)](https://aossie.org/)
 
 </div>
 
@@ -48,202 +46,92 @@
 ---
 
 <div align="center">
-<h1>TODO: Project Name</h1>
+<h1>✦ AI Keyboard</h1>
+<p><strong>Type less. Express more.</strong></p>
 </div>
 
-[TODO](https://TODO.stability.nexus/) is a ... TODO: Project Description.
+AI Keyboard is an open-source AI-powered mobile keyboard for Android and iOS. It automatically fixes grammar, translates, rewrites and improves your messages — all on your device. No cloud. No data collection. 100% private.
 
 ---
 
 ## 🚀 Features
 
-TODO: List your main features here:
+- **Auto Grammar Fix**: Automatically fixes grammar and spelling as you type
+- **Live Translation**: Translates Hinglish ↔ English and 50+ languages in real time
+- **Improve Tone**: Adjusts the tone of your message to match your intent
+- **Professional Rewrite**: Makes your text clear and professional instantly
+- **Smart Reply**: Suggests quick contextual replies
+- **Voice AI Typing**: Smart voice input with automatic punctuation
+- **Smarter Autocorrect**: Understands multilingual typing without fighting you
+- **AI Pipeline**: You control the order in which AI processes your text
 
-- **Feature 1**: Description
-- **Feature 2**: Description
-- **Feature 3**: Description
-- **Feature 4**: Description
+All features are toggle-based. Turn a feature on, type normally, tap send — AI handles the rest. No extra steps. No popups. Maximum efficiency.
 
 ---
 
 ## 💻 Tech Stack
 
-TODO: Update based on your project
+### Mobile App
+- Flutter / Dart (companion app)
+- Kotlin (Android keyboard)
+- Swift (iOS keyboard)
 
-### Frontend
-- React / Next.js / Flutter / React Native
-- TypeScript
-- TailwindCSS
-
-### Backend
-- Flask / FastAPI / Node.js / Supabase
-- Database: PostgreSQL / SQLite / MongoDB
-
-### AI/ML (if applicable)
-- LangChain / LangGraph / LlamaIndex
-- Google Gemini / OpenAI / Anthropic Claude
-- Vector Database: Weaviate / Pinecone / Chroma
-- RAG / Prompt Engineering / Agent Frameworks
-
-### Blockchain (if applicable)
-- Solidity / solana / cardano / ergo Smart Contracts
-- Hardhat / Truffle / foundry
-- Web3.js / Ethers.js / Wagmi
-- OpenZeppelin / alchemy / Infura
+### AI/ML
+- On-device models only — no API keys, no cloud
+- ML Kit (translation and language detection)
+- Model selection in progress
 
 ---
 
 ## ✅ Project Checklist
 
-TODO: Complete applicable items based on your project type
-
-- [ ] **The protocol** (if applicable):
-   - [ ] has been described and formally specified in a paper.
-   - [ ] has had its main properties mathematically proven.
-   - [ ] has been formally verified.
-- [ ] **The smart contracts** (if applicable):
-   - [ ] were thoroughly reviewed by at least two knights of The Stable Order.
-   - [ ] were deployed to: [Add deployment details]
-- [ ] **The mobile app** (if applicable):
-   - [ ] has an _About_ page containing the Stability Nexus's logo and pointing to the social media accounts of the Stability Nexus.
-   - [ ] is available for download as a release in this repo.
-   - [ ] is available in the relevant app stores.
-- [ ] **The AI/ML components** (if applicable):
-   - [ ] LLM/model selection and configuration are documented.
-   - [ ] Prompts and system instructions are version-controlled.
-   - [ ] Content safety and moderation mechanisms are implemented.
-   - [ ] API keys and rate limits are properly managed.
+- [ ] **The mobile app**:
+   - [ ] Has an _About_ page containing AOSSIE's logo
+   - [ ] Is available for download as a release in this repo
+   - [ ] Is available in the relevant app stores
+- [ ] **The AI/ML components**:
+   - [ ] LLM/model selection and configuration are documented
+   - [ ] Prompts and system instructions are version-controlled
+   - [ ] Content safety mechanisms are implemented
+   - [ ] All processing happens on-device — no API keys required
 
 ---
 
 ## 🔗 Repository Links
 
-TODO: Update with your repository structure
-
-1. [Main Repository](https://github.com/AOSSIE-Org/TODO)
-2. [Frontend](https://github.com/AOSSIE-Org/TODO/tree/main/frontend) (if separate)
-3. [Backend](https://github.com/AOSSIE-Org/TODO/tree/main/backend) (if separate)
+1. [Main Repository](https://github.com/AOSSIE-Org/AI-Keyboard)
 
 ---
 
 ## 🏗️ Architecture Diagram
 
-TODO: Add your system architecture diagram here
-
-```
-[Architecture Diagram Placeholder]
-```
-
-You can create architecture diagrams using:
-- [Draw.io](https://draw.io)
-- [Excalidraw](https://excalidraw.com)
-- [Lucidchart](https://lucidchart.com)
-- [Mermaid](https://mermaid.js.org) (for code-based diagrams)
-
-Example structure to include:
-- Frontend components
-- Backend services
-- Database architecture
-- External APIs/services
-- Data flow between components
+Coming soon.
 
 ---
 
 ## 🔄 User Flow
 
-TODO: Add user flow diagrams showing how users interact with your application
-
-```
-[User Flow Diagram Placeholder]
-```
-
-### Key User Journeys
-
-TODO: Document main user flows:
-
-1. **User Journey 1**: Description
-   - Step 1
-   - Step 2
-   - Step 3
-
-2. **User Journey 2**: Description
-   - Step 1
-   - Step 2
-   - Step 3
-
-3. **User Journey 3**: Description
-   - Step 1
-   - Step 2
-   - Step 3
+Coming soon.
 
 ---
 
-## �🍀 Getting Started
+## 🍀 Getting Started
 
-### Prerequisites
-
-TODO: List what developers need installed
-
-- Node.js 18+ / Python 3.9+ / Flutter SDK
-- npm / yarn / pnpm
-- [Any specific tools or accounts needed]
-
-### Installation
-
-TODO: Provide detailed setup instructions
-
-#### 1. Clone the Repository
-
-```bash
-git clone https://github.com/AOSSIE-Org/TODO.git
-cd TODO
-```
-
-#### 2. Install Dependencies
-
-```bash
-npm install
-# or
-yarn install
-# or
-pnpm install
-```
-
-#### 3. Configure Environment Variables(.env.example)
-
-Create a `.env` file in the root directory:
-
-```env
-# Add your environment variables here
-API_KEY=your_api_key
-DATABASE_URL=your_database_url
-```
-
-#### 4. Run the Development Server
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-#### 5. Open your Browser
-
-Navigate to [http://localhost:3000](http://localhost:3000) to see the application.
-
-For detailed setup instructions, please refer to our [Installation Guide](./docs/INSTALL_GUIDE.md) (if you have one).
+Coming soon. Architecture and setup guide will be added once the initial build is complete.
 
 ---
 
-## 📱 App Screenshots
+## 📱 UI Screens
 
-TODO: Add screenshots showcasing your application
+**Keyboard UI**
 
-|  |  |  |
-|---|---|---|
-| Screenshot 1 | Screenshot 2 | Screenshot 3 |
+![Keyboard UI](docs/assets/keyboard-ui.png)
+
+**Companion App**
+
+![Companion App](docs/assets/companion-app.png)
+
+Full designs → [Figma](https://www.figma.com/design/UIR2HswyoRBGrWoD3QXmUg/ai-keyboard-designe)
 
 ---
 
@@ -251,30 +139,28 @@ TODO: Add screenshots showcasing your application
 
 ⭐ Don't forget to star this repository if you find it useful! ⭐
 
-Thank you for considering contributing to this project! Contributions are highly appreciated and welcomed. To ensure smooth collaboration, please refer to our [Contribution Guidelines](./CONTRIBUTING.md).
+Thank you for considering contributing to AI Keyboard! Contributions are highly appreciated and welcomed. To ensure smooth collaboration, please refer to our [Contribution Guidelines](./CONTRIBUTING.md).
 
 ---
 
 ## ✨ Maintainers
 
-TODO: Add maintainer information
-
-- [Maintainer Name](https://github.com/username)
-- [Maintainer Name](https://github.com/username)
+- [Bhavik](https://github.com/bhav-07) — Project Lead
+- [Bruno Zahnentferner](https://github.com/oliverbz) — Mentor
 
 ---
 
 ## 📍 License
 
-This project is licensed under the GNU General Public License v3.0.
+This project is licensed under the MIT License.
 See the [LICENSE](LICENSE) file for details.
 
 ---
 
 ## 💪 Thanks To All Contributors
 
-Thanks a lot for spending your time helping TODO grow. Keep rocking 🥂
+Thanks a lot for spending your time helping AI Keyboard grow. Keep rocking 🥂
 
-[![Contributors](https://contrib.rocks/image?repo=AOSSIE-Org/TODO)](https://github.com/AOSSIE-Org/TODO/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=AOSSIE-Org/AI-Keyboard)](https://github.com/AOSSIE-Org/AI-Keyboard/graphs/contributors)
 
-© 2025 AOSSIE 
+© 2025 AOSSIE
