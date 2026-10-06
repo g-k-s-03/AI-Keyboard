@@ -10,9 +10,9 @@ DATASET_PATH = Path(__file__).parent / "eval_dataset.json"
 
 # (huggingface dataset id, split, category id, id prefix, sample count)
 DOWNLOAD_SPECS = [
-    ("jfleg", "validation", "english_grammar", "en_ext", 15),
-    ("assin2", "validation", "portuguese_correction", "pt_ext", 10),
-    ("l3cube-pune/hinglish-sentiment", "train", "hinglish_to_english", "hi_ext", 10),
+    ("dcavar/jfleg", "validation", "english_grammar", "en_ext", 15),
+    ("nilc-nlp/assin2", "validation", "portuguese_correction", "pt_ext", 10),
+    ("l3cube-pune/HinglishSenti", "train", "hinglish_to_english", "hi_ext", 10),
 ]
 
 CATEGORY_LANG_META = {
@@ -43,7 +43,7 @@ def _build_jfleg_prompts(ds, n, prefix):
             "gold": _pair(row["corrections"]),
             "min_output_tokens": 5,
             "already_correct": False,
-            "source": "jfleg",
+            "source": "dcavar/jfleg",
             **lang_meta,
         })
     return prompts
@@ -60,7 +60,7 @@ def _build_assin2_prompts(ds, n, prefix):
             "gold": _pair([row["hypothesis"], row["hypothesis"]]),
             "min_output_tokens": 5,
             "already_correct": False,
-            "source": "assin2",
+            "source": "nilc-nlp/assin2",
             **lang_meta,
         })
     return prompts
@@ -77,7 +77,7 @@ def _build_hinglish_prompts(ds, n, prefix):
             "gold": _pair([row["text"], row["text"]]),
             "min_output_tokens": 5,
             "already_correct": False,
-            "source": "l3cube-pune/hinglish-sentiment",
+            "source": "l3cube-pune/HinglishSenti",
             "gold_is_placeholder": True,
             **lang_meta,
         })
@@ -85,9 +85,9 @@ def _build_hinglish_prompts(ds, n, prefix):
 
 
 BUILDERS = {
-    "jfleg": _build_jfleg_prompts,
-    "assin2": _build_assin2_prompts,
-    "l3cube-pune/hinglish-sentiment": _build_hinglish_prompts,
+    "dcavar/jfleg": _build_jfleg_prompts,
+    "nilc-nlp/assin2": _build_assin2_prompts,
+    "l3cube-pune/HinglishSenti": _build_hinglish_prompts,
 }
 
 

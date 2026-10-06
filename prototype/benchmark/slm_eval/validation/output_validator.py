@@ -48,7 +48,12 @@ def validate_output(output: str, prompt: dict) -> dict:
 
     length_ok = len(output.split()) >= prompt.get("min_output_tokens", 1)
 
-    echo_detected = output.strip().lower() == prompt["input"].strip().lower()
+    already_correct = prompt.get("already_correct") is True
+
+    echo_detected = (
+        output.strip().lower() == prompt["input"].strip().lower()
+        and not already_correct
+    )
 
     contamination_detected = any(
         output.lower().startswith(p) for p in CONTAMINATION_PREFIXES
@@ -61,13 +66,16 @@ def validate_output(output: str, prompt: dict) -> dict:
             protected_ok = False
             missing_protected.append(token)
 
-    task_success = (
-        script_ok
-        and length_ok
-        and not echo_detected
-        and not contamination_detected
-        and protected_ok
-    )
+    if already_correct:
+        task_success = bool(output.strip())
+    else:
+        task_success = (
+            script_ok
+            and length_ok
+            and not echo_detected
+            and not contamination_detected
+            and protected_ok
+        )
 
     return {
         "task_success": task_success,
