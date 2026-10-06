@@ -1,0 +1,31 @@
+name: AI Keyboard SLM Evaluation
+version: "1.1"
+description: Benchmark config for AI Keyboard project multilingual evaluation
+
+models:
+  - Qwen/Qwen2.5-0.5B-Instruct
+  - HuggingFaceTB/SmolLM2-360M-Instruct
+
+languages:
+  - hinglish
+  - hindi
+  - portuguese
+  - russian
+  - english
+
+categories:
+  - hinglish_to_english
+  - hindi_correction
+  - portuguese_correction
+  - russian_correction
+  - english_grammar
+  - professional_rewrite
+  - error_correction
+  - meaning_preservation
+  - protected_tokens
+
+runs_per_prompt: 3
+warmup_runs: 1
+max_new_tokens: 100
+output_dir: results/
+device_name: auto
