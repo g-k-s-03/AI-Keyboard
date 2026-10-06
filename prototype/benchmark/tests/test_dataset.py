@@ -36,3 +36,28 @@ def test_total_prompt_count():
         data = json.load(f)
     total = sum(len(cat["prompts"]) for cat in data["categories"])
     assert total == data["total_prompts"]
+
+
+def test_already_correct_prompts_exist():
+    with open(DATASET_PATH, encoding="utf-8") as f:
+        data = json.load(f)
+    already_correct = [
+        prompt
+        for cat in data["categories"]
+        for prompt in cat["prompts"]
+        if prompt.get("already_correct") is True
+    ]
+    assert len(already_correct) >= 3
+
+
+def test_source_field_exists_on_extended_prompts():
+    with open(DATASET_PATH, encoding="utf-8") as f:
+        data = json.load(f)
+    sourced = [
+        prompt
+        for cat in data["categories"]
+        for prompt in cat["prompts"]
+        if "source" in prompt
+    ]
+    for prompt in sourced:
+        assert isinstance(prompt["source"], str) and prompt["source"] != ""

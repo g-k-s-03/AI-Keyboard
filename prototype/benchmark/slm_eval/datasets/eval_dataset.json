@@ -1,8 +1,8 @@
 {
   "version": "1.1.0",
-  "description": "Multilingual evaluation dataset for AI Keyboard SLM benchmarking. v0.1 pilot set - 31 prompts across 9 categories.",
+  "description": "Multilingual evaluation dataset for AI Keyboard SLM benchmarking. v0.1 pilot set - 34 prompts across 9 categories.",
   "note": "This is a pilot evaluation set. For publication-grade results expand to 150+ prompts per reviewer recommendations. Human evaluation is strongly recommended alongside these automated metrics since BLEU/ROUGE/chrF cannot fully judge rewriting quality.",
-  "total_prompts": 31,
+  "total_prompts": 34,
   "categories": [
 
     {
@@ -228,6 +228,17 @@
           "script_expected": "latin",
           "min_output_tokens": 8,
           "already_correct": false
+        },
+        {
+          "id": "en4",
+          "input": "I will be there at six o'clock, please do not worry about it.",
+          "gold": ["I will be there at six o'clock, please do not worry about it.", "I will be there at six o'clock, please do not worry about it."],
+          "instruction": "Fix grammar and spelling. Return ONLY the corrected text.",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 6,
+          "already_correct": true
         }
       ]
     },
@@ -258,6 +269,17 @@
           "script_expected": "latin",
           "min_output_tokens": 8,
           "already_correct": false
+        },
+        {
+          "id": "pr3",
+          "input": "Could you please review this document before Monday?",
+          "gold": ["Could you please review this document before Monday?", "Could you please review this document before Monday?"],
+          "instruction": "Rewrite this message in a professional tone. Return ONLY the rewritten text.",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 6,
+          "already_correct": true
         }
       ]
     },
@@ -321,6 +343,17 @@
           "script_expected": "latin",
           "min_output_tokens": 6,
           "already_correct": false
+        },
+        {
+          "id": "err6",
+          "input": "The report was sent successfully to all recipients.",
+          "gold": ["The report was sent successfully to all recipients.", "The report was sent successfully to all recipients."],
+          "instruction": "Fix all spelling errors and grammar. Return ONLY the corrected text.",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 6,
+          "already_correct": true
         }
       ]
     },

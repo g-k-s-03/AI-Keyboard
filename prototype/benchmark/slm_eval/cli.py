@@ -130,7 +130,9 @@ def dataset():
 @click.option("--warmup", default=1, help="Warm-up runs before measuring")
 @click.option("--max-new-tokens", default=100)
 @click.option("--output-dir", default="results")
-def test(model, lang, device_name, runs, warmup, max_new_tokens, output_dir):
+@click.option("--category", default=None, help="Restrict to a single dataset category id")
+@click.option("--verbose", is_flag=True, default=False, help="Print input/output/gold per prompt")
+def test(model, lang, device_name, runs, warmup, max_new_tokens, output_dir, category, verbose):
     """Test a single model on the benchmark dataset."""
     from slm_eval.metrics.device_metrics import get_device_info
     from slm_eval.benchmarks.slm_benchmark import run_slm_benchmark
@@ -150,6 +152,7 @@ def test(model, lang, device_name, runs, warmup, max_new_tokens, output_dir):
         result = run_slm_benchmark(
             model,
             lang_filter=lang,
+            category_filter=category,
             runs=runs,
             warmup_runs=warmup,
             max_new_tokens=max_new_tokens,
@@ -159,6 +162,14 @@ def test(model, lang, device_name, runs, warmup, max_new_tokens, output_dir):
     if "error" in result:
         console.print(f"[red]Error: {result['error']}[/red]")
         return
+
+    if verbose:
+        for r in result["prompt_results"]:
+            console.print(f"\n[dim]--- {r.get('prompt_id')} ({r.get('category')}) ---[/dim]")
+            console.print(f"[cyan]Input:[/cyan] {r.get('input')}")
+            console.print(f"[green]Output:[/green] {r.get('sanitized_output', r.get('error', ''))}")
+            gold = r.get("gold") or []
+            console.print(f"[yellow]Gold:[/yellow] {gold[0] if gold else ''}")
 
     table = Table(title=f"Results: {model}")
     table.add_column("Category", style="cyan")
@@ -272,6 +283,13 @@ def list_models():
     console.print(table)
     console.print("\n[dim]Multimodal / vision-language models are not supported.[/dim]")
     console.print("[dim]Use text-only CausalLM models only.[/dim]")
+
+
+@main.command("download-datasets")
+def download_datasets():
+    """Download real NLP datasets from HuggingFace and merge them into the eval dataset."""
+    from slm_eval.datasets.download_datasets import run_downloads
+    run_downloads()
 
 
 @main.command("validate-dataset")

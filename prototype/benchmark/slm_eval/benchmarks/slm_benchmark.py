@@ -10,7 +10,7 @@ import torch
 from slm_eval.metrics.bleu import calculate_all_metrics
 from slm_eval.metrics.device_metrics import get_ram_usage_mb
 from slm_eval.models.loader import build_prompt, load_model_and_tokenizer
-from slm_eval.utils.reproducibility import set_seed
+from slm_eval.utils.reproducibility import get_benchmark_env, set_seed
 from slm_eval.validation.output_validator import sanitize_output, validate_output
 
 DATASET_PATH = Path(__file__).parent.parent / "datasets" / "eval_dataset.json"
@@ -99,7 +99,7 @@ def run_slm_benchmark(
         return {"error": load_error, "model_id": model_id}
 
     ram_after = get_ram_usage_mb()
-    model_ram_mb = round(ram_after - ram_before, 1)
+    model_ram_mb = round(max(0, ram_after - ram_before), 1)
 
     if warmup_runs > 0:
         warmup_ids = tokenizer("Hello", return_tensors="pt")["input_ids"]
@@ -230,4 +230,5 @@ def run_slm_benchmark(
             for cat, v in per_category.items()
         },
         "prompt_results": results,
+        "environment": get_benchmark_env(),
     }

@@ -1,3 +1,4 @@
+import platform
 import random
 
 import numpy as np
@@ -14,3 +15,21 @@ def set_seed(seed: int = DEFAULT_SEED) -> None:
     torch.manual_seed(seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)
+
+
+def get_benchmark_env(seed: int = DEFAULT_SEED) -> dict:
+    """Capture the runtime environment a benchmark run was produced under,
+    so results can be reproduced or discounted later."""
+    try:
+        import transformers
+        transformers_version = transformers.__version__
+    except ImportError:
+        transformers_version = "not_installed"
+
+    return {
+        "python_version": platform.python_version(),
+        "torch_version": torch.__version__,
+        "transformers_version": transformers_version,
+        "platform": platform.platform(),
+        "seed_used": seed,
+    }

@@ -1,6 +1,7 @@
 from slm_eval.metrics.bleu import (
     calculate_bleu, calculate_chrf, calculate_exact_match,
 )
+from slm_eval.utils.reproducibility import get_benchmark_env
 from slm_eval.validation.output_validator import sanitize_output, validate_output
 
 
@@ -69,3 +70,10 @@ def test_validate_protected_token_missing():
     result = validate_output("Please send the email.", prompt)
     assert result["protected_ok"] is False
     assert "govind@example.com" in result["missing_protected_tokens"]
+
+
+def test_get_benchmark_env_keys():
+    env = get_benchmark_env()
+    assert isinstance(env, dict)
+    for key in ("python_version", "torch_version", "transformers_version", "platform"):
+        assert key in env

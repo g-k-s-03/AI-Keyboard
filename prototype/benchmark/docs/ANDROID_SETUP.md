@@ -68,3 +68,10 @@ slm-eval test \
 ## Step 9: Submit Your Results
 Copy the `results/` folder contents and submit as a PR
 to share your device benchmark with the community.
+
+## Known Limitations
+- iOS not tested (50MB RAM limit makes on-device SLM impractical)
+- Human evaluation pending native speaker review (Bruno for Portuguese/Russian, Keshav for Hindi/Hinglish)
+- Multiple device testing pending community contributions
+- GPU benchmarking not implemented
+- End-to-end ASR+SLM pipeline latency not yet measured
