@@ -1,0 +1,429 @@
+{
+  "version": "1.1.0",
+  "description": "Multilingual evaluation dataset for AI Keyboard SLM benchmarking. v0.1 pilot set - 31 prompts across 9 categories.",
+  "note": "This is a pilot evaluation set. For publication-grade results expand to 150+ prompts per reviewer recommendations. Human evaluation is strongly recommended alongside these automated metrics since BLEU/ROUGE/chrF cannot fully judge rewriting quality.",
+  "total_prompts": 31,
+  "categories": [
+
+    {
+      "id": "hinglish_to_english",
+      "name": "Hinglish to English Translation",
+      "description": "Romanized Hindi+English mixed text translated to English",
+      "prompts": [
+        {
+          "id": "h1",
+          "input": "kya haal hai bhai meeting kb h",
+          "gold": ["How are you bro, when is the meeting?", "Hey how are you, when is the meeting?"],
+          "instruction": "Translate this Hinglish to English. Return ONLY the translation.",
+          "input_lang": "hi-Latn+en",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 6,
+          "already_correct": false
+        },
+        {
+          "id": "h2",
+          "input": "kal meeting cancel ho gayi kya",
+          "gold": ["Was the meeting cancelled yesterday?", "Did the meeting get cancelled?"],
+          "instruction": "Translate this Hinglish to English. Return ONLY the translation.",
+          "input_lang": "hi-Latn",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 5,
+          "already_correct": false
+        },
+        {
+          "id": "h3",
+          "input": "yaar please report bhej de aaj tak",
+          "gold": ["Please send the report by today.", "Send the report today please."],
+          "instruction": "Translate this Hinglish to English. Return ONLY the translation.",
+          "input_lang": "hi-Latn",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 5,
+          "already_correct": false
+        },
+        {
+          "id": "h4",
+          "input": "meeting 6 baje hai mat bhoolna",
+          "gold": ["The meeting is at 6, do not forget.", "Meeting is at 6 PM, please do not forget."],
+          "instruction": "Translate this Hinglish to English. Return ONLY the translation.",
+          "input_lang": "hi-Latn",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 6,
+          "already_correct": false
+        },
+        {
+          "id": "h5",
+          "input": "bhai kaam ho gaya kya abhi tak",
+          "gold": ["Bro is the work done yet?", "Has the work been completed yet?"],
+          "instruction": "Translate this Hinglish to English. Return ONLY the translation.",
+          "input_lang": "hi-Latn",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 5,
+          "already_correct": false
+        }
+      ]
+    },
+
+    {
+      "id": "hindi_correction",
+      "name": "Hindi Same-Language Correction",
+      "description": "Romanized Hindi corrected and returned in Devanagari script",
+      "prompts": [
+        {
+          "id": "hi1",
+          "input": "meri report kal tak nhi bheji gayi thi",
+          "gold": ["मेरी रिपोर्ट कल तक नहीं भेजी गई थी।", "मेरी रिपोर्ट कल तक नहीं भेजी गयी थी।"],
+          "instruction": "Fix grammar of this Hindi in Roman script and return in proper Hindi Devanagari script. Return ONLY the corrected Hindi.",
+          "input_lang": "hi-Latn",
+          "output_lang": "hi-Deva",
+          "script_expected": "devanagari",
+          "min_output_tokens": 6,
+          "already_correct": false
+        },
+        {
+          "id": "hi2",
+          "input": "aaj meeting bahut lamba tha kuch samajh nahi aaya",
+          "gold": ["आज की मीटिंग बहुत लंबी थी और कुछ समझ नहीं आया।", "आज की बैठक बहुत लंबी थी, कुछ समझ नहीं आया।"],
+          "instruction": "Fix grammar of this Hindi in Roman script and return in proper Hindi Devanagari script. Return ONLY the corrected Hindi.",
+          "input_lang": "hi-Latn",
+          "output_lang": "hi-Deva",
+          "script_expected": "devanagari",
+          "min_output_tokens": 7,
+          "already_correct": false
+        },
+        {
+          "id": "hi3",
+          "input": "kya tum kal office aoge ya ghar se kaam karoge",
+          "gold": ["क्या तुम कल ऑफिस आओगे या घर से काम करोगे?", "क्या आप कल कार्यालय आएंगे या घर से काम करेंगे?"],
+          "instruction": "Fix grammar of this Hindi in Roman script and return in proper Hindi Devanagari script. Return ONLY the corrected Hindi.",
+          "input_lang": "hi-Latn",
+          "output_lang": "hi-Deva",
+          "script_expected": "devanagari",
+          "min_output_tokens": 7,
+          "already_correct": false
+        }
+      ]
+    },
+
+    {
+      "id": "portuguese_correction",
+      "name": "Portuguese Same-Language Correction",
+      "description": "Informal Portuguese corrected to proper Portuguese (pt-BR)",
+      "prompts": [
+        {
+          "id": "pt1",
+          "input": "vc pode me manda o arquivo hj",
+          "gold": ["Você pode me mandar o arquivo hoje?", "Você pode me enviar o arquivo hoje?"],
+          "instruction": "Fix grammar of this Portuguese text. Return ONLY corrected Portuguese.",
+          "input_lang": "pt",
+          "output_lang": "pt",
+          "script_expected": "latin",
+          "min_output_tokens": 6,
+          "already_correct": false
+        },
+        {
+          "id": "pt2",
+          "input": "a reuniao foi cancela pq o chefe nao veio",
+          "gold": ["A reunião foi cancelada porque o chefe não veio.", "A reunião foi cancelada pois o chefe não compareceu."],
+          "instruction": "Fix grammar of this Portuguese text. Return ONLY corrected Portuguese.",
+          "input_lang": "pt",
+          "output_lang": "pt",
+          "script_expected": "latin",
+          "min_output_tokens": 7,
+          "already_correct": false
+        },
+        {
+          "id": "pt3",
+          "input": "preciso do relatorio ate amanha cedo",
+          "gold": ["Preciso do relatório até amanhã cedo.", "Eu preciso do relatório até amanhã de manhã."],
+          "instruction": "Fix grammar of this Portuguese text. Return ONLY corrected Portuguese.",
+          "input_lang": "pt",
+          "output_lang": "pt",
+          "script_expected": "latin",
+          "min_output_tokens": 5,
+          "already_correct": false
+        }
+      ]
+    },
+
+    {
+      "id": "russian_correction",
+      "name": "Russian Same-Language Correction",
+      "description": "Romanized Russian corrected and returned in Cyrillic script",
+      "prompts": [
+        {
+          "id": "ru1",
+          "input": "privet kogda budet vstrecha zavtra",
+          "gold": ["Привет, когда завтра будет встреча?", "Привет! Когда завтра встреча?"],
+          "instruction": "Translate this romanized Russian to proper Russian Cyrillic script and fix any grammar. Return ONLY the Cyrillic text.",
+          "input_lang": "ru-Latn",
+          "output_lang": "ru-Cyrl",
+          "script_expected": "cyrillic",
+          "min_output_tokens": 4,
+          "already_correct": false
+        },
+        {
+          "id": "ru2",
+          "input": "ya ne smog otpravit otchet segodnya izvini",
+          "gold": ["Я не смог отправить отчёт сегодня, извини.", "Я не смог сегодня отправить отчёт, прости."],
+          "instruction": "Translate this romanized Russian to proper Russian Cyrillic script and fix any grammar. Return ONLY the Cyrillic text.",
+          "input_lang": "ru-Latn",
+          "output_lang": "ru-Cyrl",
+          "script_expected": "cyrillic",
+          "min_output_tokens": 5,
+          "already_correct": false
+        },
+        {
+          "id": "ru3",
+          "input": "mozhesh prislat fayl kogda budet vremya",
+          "gold": ["Можешь прислать файл, когда будет время?", "Можешь отправить файл, когда будешь свободен?"],
+          "instruction": "Translate this romanized Russian to proper Russian Cyrillic script and fix any grammar. Return ONLY the Cyrillic text.",
+          "input_lang": "ru-Latn",
+          "output_lang": "ru-Cyrl",
+          "script_expected": "cyrillic",
+          "min_output_tokens": 4,
+          "already_correct": false
+        }
+      ]
+    },
+
+    {
+      "id": "english_grammar",
+      "name": "English Grammar Fix",
+      "description": "English grammar and spelling correction",
+      "prompts": [
+        {
+          "id": "en1",
+          "input": "i wil b thr at 6 dont wrry abt it",
+          "gold": ["I will be there at 6, do not worry about it.", "I will be there at 6, don't worry about it."],
+          "instruction": "Fix grammar and spelling. Return ONLY the corrected text.",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 8,
+          "already_correct": false
+        },
+        {
+          "id": "en2",
+          "input": "hey can u send me that file asap its urgent",
+          "gold": ["Hey, can you send me that file as soon as possible? It is urgent.", "Hey, could you send me that file ASAP? It is urgent."],
+          "instruction": "Fix grammar and spelling. Return ONLY the corrected text.",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 8,
+          "already_correct": false
+        },
+        {
+          "id": "en3",
+          "input": "the report was suppose to submitted yesterday but i forgot",
+          "gold": ["The report was supposed to be submitted yesterday, but I forgot.", "The report should have been submitted yesterday, but I forgot."],
+          "instruction": "Fix grammar and spelling. Return ONLY the corrected text.",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 8,
+          "already_correct": false
+        }
+      ]
+    },
+
+    {
+      "id": "professional_rewrite",
+      "name": "Professional Rewrite",
+      "description": "Casual messages rewritten in professional tone",
+      "prompts": [
+        {
+          "id": "pr1",
+          "input": "hey can u talk to the client tmrw its really imp",
+          "gold": ["Could you please speak with the client tomorrow? It is quite important.", "Would you be able to connect with the client tomorrow? It is very important."],
+          "instruction": "Rewrite this message in a professional tone. Return ONLY the rewritten text.",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 8,
+          "already_correct": false
+        },
+        {
+          "id": "pr2",
+          "input": "we need to fix this bug before launch or everything will break",
+          "gold": ["We need to resolve this bug before the launch, as it could cause significant issues.", "It is critical that we address this bug prior to launch to prevent system failures."],
+          "instruction": "Rewrite this message in a professional tone. Return ONLY the rewritten text.",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 8,
+          "already_correct": false
+        }
+      ]
+    },
+
+    {
+      "id": "error_correction",
+      "name": "Wrong Input and Spelling Error Correction",
+      "description": "Real-world typing errors, autocorrect mistakes and SMS abbreviations",
+      "prompts": [
+        {
+          "id": "err1",
+          "input": "i recieved ur msg but coudnt repply bcz was bzy",
+          "gold": ["I received your message but could not reply because I was busy.", "I received your message but couldn't reply as I was busy."],
+          "instruction": "Fix all spelling errors, grammar and expand abbreviations. Return ONLY the corrected text.",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 8,
+          "already_correct": false
+        },
+        {
+          "id": "err2",
+          "input": "teh report has been sended to all the recepients",
+          "gold": ["The report has been sent to all the recipients.", "The report was sent to all recipients."],
+          "instruction": "Fix all spelling errors and grammar. Return ONLY the corrected text.",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 6,
+          "already_correct": false
+        },
+        {
+          "id": "err3",
+          "input": "ill meat u @ the ofice @ 3pm tmrw k",
+          "gold": ["I will meet you at the office at 3 PM tomorrow, okay?", "I'll meet you at the office at 3 PM tomorrow, okay?"],
+          "instruction": "Fix spelling, grammar and expand abbreviations. Return ONLY the corrected text.",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 8,
+          "already_correct": false
+        },
+        {
+          "id": "err4",
+          "input": "Its a grate oppurtunity we shud definately go 4 it",
+          "gold": ["It is a great opportunity, we should definitely go for it.", "It's a great opportunity and we should definitely go for it."],
+          "instruction": "Fix all spelling errors and grammar. Return ONLY the corrected text.",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 8,
+          "already_correct": false
+        },
+        {
+          "id": "err5",
+          "input": "kyaa haaal hy bhai sab theak h",
+          "gold": ["How are you bro, is everything okay?", "Hey bro how are you, is everything fine?"],
+          "instruction": "Fix spelling errors and translate this Hinglish to English. Return ONLY the corrected English text.",
+          "input_lang": "hi-Latn",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 6,
+          "already_correct": false
+        }
+      ]
+    },
+
+    {
+      "id": "meaning_preservation",
+      "name": "Meaning Preservation Tests",
+      "description": "Model must fix grammar WITHOUT changing names, numbers, times, dates or URLs",
+      "prompts": [
+        {
+          "id": "mp1",
+          "input": "meeting with rahul at 6:30 pm on friday dont be late",
+          "gold": ["Meeting with Rahul at 6:30 PM on Friday, don't be late.", "Meeting with Rahul is at 6:30 PM on Friday. Please do not be late."],
+          "instruction": "Fix grammar and capitalization. Do NOT change any names, times or dates. Return ONLY the corrected text.",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 8,
+          "already_correct": false,
+          "protected_values": ["Rahul", "6:30 PM", "6:30", "Friday"]
+        },
+        {
+          "id": "mp2",
+          "input": "call priya at 9am before the 3pm deadline",
+          "gold": ["Call Priya at 9 AM before the 3 PM deadline.", "Please call Priya at 9 AM before the 3 PM deadline."],
+          "instruction": "Fix grammar and capitalization. Do NOT change any names or times. Return ONLY the corrected text.",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 7,
+          "already_correct": false,
+          "protected_values": ["Priya", "9 AM", "9am", "3 PM", "3pm"]
+        },
+        {
+          "id": "mp3",
+          "input": "send the invoice of rs 45000 to amit by monday",
+          "gold": ["Send the invoice of Rs 45,000 to Amit by Monday.", "Please send the invoice of Rs 45,000 to Amit by Monday."],
+          "instruction": "Fix grammar and capitalization. Do NOT change any names, amounts or dates. Return ONLY the corrected text.",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 8,
+          "already_correct": false,
+          "protected_values": ["45000", "45,000", "Amit", "Monday"]
+        }
+      ]
+    },
+
+    {
+      "id": "protected_tokens",
+      "name": "Protected Token Preservation",
+      "description": "Model must preserve emails, URLs, phone numbers, OTPs and @mentions exactly",
+      "prompts": [
+        {
+          "id": "pt_1",
+          "input": "plz send the report to govind@example.com by tmrw",
+          "gold": ["Please send the report to govind@example.com by tomorrow.", "Please send the report to govind@example.com by tomorrow morning."],
+          "instruction": "Fix grammar and spelling. Do NOT change the email address. Return ONLY the corrected text.",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 7,
+          "already_correct": false,
+          "protected_values": ["govind@example.com"]
+        },
+        {
+          "id": "pt_2",
+          "input": "checkout r new website at https://aossie.org for more info",
+          "gold": ["Check out our new website at https://aossie.org for more information.", "Check out our new website at https://aossie.org for more info."],
+          "instruction": "Fix grammar and spelling. Do NOT change the URL. Return ONLY the corrected text.",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 8,
+          "already_correct": false,
+          "protected_values": ["https://aossie.org"]
+        },
+        {
+          "id": "pt_3",
+          "input": "ur otp is 482913 dont share it wit anyone",
+          "gold": ["Your OTP is 482913. Do not share it with anyone.", "Your OTP is 482913, please do not share it with anyone."],
+          "instruction": "Fix grammar and spelling. Do NOT change the OTP number. Return ONLY the corrected text.",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 7,
+          "already_correct": false,
+          "protected_values": ["482913"]
+        },
+        {
+          "id": "pt_4",
+          "input": "ping @bhavik on discord abt the meeting tmrw",
+          "gold": ["Ping @bhavik on Discord about the meeting tomorrow.", "Please ping @bhavik on Discord regarding tomorrow's meeting."],
+          "instruction": "Fix grammar and spelling. Do NOT change @mentions. Return ONLY the corrected text.",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin",
+          "min_output_tokens": 7,
+          "already_correct": false,
+          "protected_values": ["@bhavik"]
+        }
+      ]
+    }
+
+  ]
+}
