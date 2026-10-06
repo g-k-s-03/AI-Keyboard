@@ -45,7 +45,7 @@ def load_model_and_tokenizer(model_id: str):
         return None, None, f"LOAD ERROR: {error}"
 
 
-def build_prompt(tokenizer, system_prompt: str, instruction: str, input_text: str) -> torch.Tensor:
+def build_prompt(tokenizer, system_prompt: str, instruction: str, input_text: str) -> str:
     """
     Build prompt using chat template if available,
     fall back to raw string format if not.
@@ -56,19 +56,16 @@ def build_prompt(tokenizer, system_prompt: str, instruction: str, input_text: st
     ]
     try:
         if hasattr(tokenizer, "apply_chat_template") and tokenizer.chat_template:
-            inputs = tokenizer.apply_chat_template(
+            return tokenizer.apply_chat_template(
                 messages,
                 add_generation_prompt=True,
-                tokenize=True,
-                return_tensors="pt",
+                tokenize=False,
             )
-            return inputs
     except Exception:
         pass
 
-    raw = (
+    return (
         f"{system_prompt}\n\n"
         f"Instruction: {instruction}\n\n"
         f"Text: {input_text}\n\nOutput:"
     )
-    return tokenizer(raw, return_tensors="pt")["input_ids"]

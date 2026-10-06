@@ -115,12 +115,13 @@ def run_slm_benchmark(
     try:
         for prompt in prompts:
             category = prompt["category_id"]
-            input_ids = build_prompt(
+            prompt_text = build_prompt(
                 tokenizer,
                 SYSTEM_PROMPT,
                 prompt["instruction"],
                 prompt["input"],
             )
+            input_ids = tokenizer(prompt_text, return_tensors="pt")["input_ids"]
 
             run_latencies = []
             last_output = ""
