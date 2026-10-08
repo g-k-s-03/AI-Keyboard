@@ -2,7 +2,7 @@
   "version": "1.1.0",
   "description": "Multilingual evaluation dataset for AI Keyboard SLM benchmarking. v0.1 pilot set - 34 prompts across 9 categories.",
   "note": "This is a pilot evaluation set. For publication-grade results expand to 150+ prompts per reviewer recommendations. Human evaluation is strongly recommended alongside these automated metrics since BLEU/ROUGE/chrF cannot fully judge rewriting quality.",
-  "total_prompts": 44,
+  "total_prompts": 68,
   "categories": [
     {
       "id": "hinglish_to_english",
@@ -78,6 +78,141 @@
           "script_expected": "latin",
           "min_output_tokens": 5,
           "already_correct": false
+        },
+        {
+          "id": "hi_ext_1",
+          "instruction": "Translate this Hinglish text to English.",
+          "input": "film ka kya naam hai",
+          "gold": [
+            "What's the name of the movie",
+            "What's the name of the movie"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "findnitai/english-to-hinglish",
+          "input_lang": "hi-Latn",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "hi_ext_2",
+          "instruction": "Translate this Hinglish text to English.",
+          "input": "namaste, sada hua tomatoes score mahaan hai, lekin meta critic score is gunavatta kee philm se thoda kam lagata hai.",
+          "gold": [
+            "Hi, the rotten tomatoes score is great but the meta critic score seems a little low a movie of this quality. ",
+            "Hi, the rotten tomatoes score is great but the meta critic score seems a little low a movie of this quality. "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "findnitai/english-to-hinglish",
+          "input_lang": "hi-Latn",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "hi_ext_3",
+          "instruction": "Translate this Hinglish text to English.",
+          "input": "kya aapako lagata hai ki aapako film pasand aaegee",
+          "gold": [
+            "Do you think you will like the movie",
+            "Do you think you will like the movie"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "findnitai/english-to-hinglish",
+          "input_lang": "hi-Latn",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "hi_ext_4",
+          "instruction": "Translate this Hinglish text to English.",
+          "input": "yah kis tarah kee philm hai",
+          "gold": [
+            "What kind of movie is it",
+            "What kind of movie is it"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "findnitai/english-to-hinglish",
+          "input_lang": "hi-Latn",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "hi_ext_5",
+          "instruction": "Translate this Hinglish text to English.",
+          "input": "film  kab banee thee?",
+          "gold": [
+            "when was the movie made?",
+            "when was the movie made?"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "findnitai/english-to-hinglish",
+          "input_lang": "hi-Latn",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "hi_ext_6",
+          "instruction": "Translate this Hinglish text to English.",
+          "input": "aashchary hai ki mahila, mujhe lagata hai ki mujhe is film mein bahut maja aaega",
+          "gold": [
+            "Wonder woman, I think i would enjoy this movie very much",
+            "Wonder woman, I think i would enjoy this movie very much"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "findnitai/english-to-hinglish",
+          "input_lang": "hi-Latn",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "hi_ext_7",
+          "instruction": "Translate this Hinglish text to English.",
+          "input": "yah deesee komik duniya mein sthaapit ek ekshan philm hai",
+          "gold": [
+            "It is a action movie set in the DC comic world",
+            "It is a action movie set in the DC comic world"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "findnitai/english-to-hinglish",
+          "input_lang": "hi-Latn",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "hi_ext_8",
+          "instruction": "Translate this Hinglish text to English.",
+          "input": ": film mein kaun sitaare hain",
+          "gold": [
+            "Who stars in the movie",
+            "Who stars in the movie"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "findnitai/english-to-hinglish",
+          "input_lang": "hi-Latn",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "hi_ext_9",
+          "instruction": "Translate this Hinglish text to English.",
+          "input": "Movie 2015 mein banee thee",
+          "gold": [
+            "the movie was made in 2015",
+            "the movie was made in 2015"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "findnitai/english-to-hinglish",
+          "input_lang": "hi-Latn",
+          "output_lang": "en",
+          "script_expected": "latin"
         }
       ]
     },
@@ -438,6 +573,231 @@
           "script_expected": "latin",
           "min_output_tokens": 6,
           "already_correct": true
+        },
+        {
+          "id": "en_ext_1",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "So I think we can not live if old people could not find siences and tecnologies and they did not developped . ",
+          "gold": [
+            "So I think we would not be alive if our ancestors did not develop sciences and technologies . ",
+            "So I think we could not live if older people did not develop science and technologies . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_2",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "For not use car . ",
+          "gold": [
+            "Not for use with a car . ",
+            "Do not use in the car . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_3",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Here was no promise of morning except that we looked up through the trees we saw how low the forest had swung . ",
+          "gold": [
+            "Here was no promise of morning , except that we looked up through the trees , and we saw how low the forest had swung . ",
+            "Here , there was no promise of morning , except that we looked up through the trees and saw how low the forest had swung . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_4",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Thus even today sex is considered as the least important topic in many parts of India . ",
+          "gold": [
+            "Thus , even today , sex is considered as the least important topic in may parts of India . ",
+            "Thus , even today , sex is considered the least important topic in many parts of India . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_5",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "image you salf you are wark in factory just to do one thing like pot taire on car if they fire you you will destroy , becouse u dont know more than pot taire in car . ",
+          "gold": [
+            "Imagine yourself you are working in factory just to do one thing like put air a on car if they fire you you will be destroyed , because you do n't know more than to put air a in car . ",
+            "Imagine that you work in a factory and do just one thing , like put tires on cars ; if they fire you , they will destroy you because you do n't know how to do anything but put tires on cars . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_6",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "They draw the consumers , like me , to purchase this great product with all these amazing ingredients and all that but actually they just sometimes make something up just to increase their sales . ",
+          "gold": [
+            "They draw in the consumers , like me , to purchase a great product with amazing ingredients , but actually , they just make up these words to increase their sales . ",
+            "They draw in consumers like me , who purchase this great product with all these amazing ingredients , but sometimes they just make things up to increase their sales . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_7",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "I want to talk about nocive or bad products like alcohol , hair spray and cigarrets . ",
+          "gold": [
+            "I want to talk about nocive or bad products like alcohol , hair spray and cigarettes . ",
+            "I want to talk about harmful or bad products like alcohol , hair spray and cigarettes . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_8",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "For example they can play football whenever they want but the olders can not . ",
+          "gold": [
+            "For example , they can play football whenever they want , but the elders cannot . ",
+            "For example , they can play football whenever they want but the others can not . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_9",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "It figures Diana Krall wearing a Rolex watch and has a text that suggests that if the reader wants to belong to the restricted club , not necessarily of Rolex watch wearers , but of highly talented , sophisticated and competent artists , he or she should also have a Rolex . ",
+          "gold": [
+            "It features Diana Krall wearing a Rolex watch and the text suggests that if the reader wants to belong to a restricted club -- not necessarily of Rolex watch-wearers -- but of highly talented , sophisticated , competent artists , then he or she should also have a Rolex . ",
+            "Diana Krall is wearing a Rolex watch and has a text that suggests that if the reader wants to belong to a restricted club , comprised not just of Rolex watch wearers but highly talented , sophisticated and competent artists , he or she should also have a Rolex . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_10",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "There are several reason . ",
+          "gold": [
+            "There are several reasons . ",
+            "There are several reasons . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_11",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Also the work of the media , television , magazines , and every stuff made for publicity affects the emotions of many people around the world , encouraging them to buy and buy anything they can . ",
+          "gold": [
+            "Also , the work of the media , television , magazines and other things made for publicity impacts the emotions of many people around the world , encouraging them to buy everything they can . ",
+            "Also , the work of the media , television , magazines , and everything involved in publicity affects the emotions of people around the world , encouraging them to buy anything they can . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_12",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Since most urban areas are occupied with cars , they are all facing up with an irresistible problem of air and noise pollution . ",
+          "gold": [
+            "Since most urban areas are occupied with cars , they are facing a problem of air and noise pollution . ",
+            "Since most urban areas are congested with cars , they all face the terrible problem of air and noise pollution . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_13",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "It is true that consumers preffer to buy a product that has a lower price , but when international companies that has already the certification begins to send its market , people will preffer to consume theirs because the difference between prices is probbably not going to affect them to much . ",
+          "gold": [
+            "While it is true that consumers prefer to buy products with lower prices , when international companies that are already certified begin to send their products to market , people will prefer to consume those goods because the difference in price will probably not affect them too much . ",
+            "It is true that consumers prefer to buy a product that has a lower price , but when international companies that already have the certification begin to send it to market , people will prefer to buy theirs because the difference between prices is probably not going to affect them too much . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_14",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "4:they have a big chance to prepare for their future life ",
+          "gold": [
+            "Fourth , they have a great chance to prepare for their future life . ",
+            "Point four is that they have a big chance to prepare for their future life . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_15",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "One person if do n't have good health that means so many things they could lost . ",
+          "gold": [
+            "If a person does n't have good health , so many things could be lost . ",
+            "If one person does not have good health , that means they could lose so many things . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
         }
       ]
     },

@@ -10,9 +10,9 @@ DATASET_PATH = Path(__file__).parent / "eval_dataset.json"
 
 # (huggingface dataset id, split, category id, id prefix, sample count)
 DOWNLOAD_SPECS = [
-    ("dcavar/jfleg", "validation", "english_grammar", "en_ext", 15),
+    ("jhu-clsp/jfleg", "validation", "english_grammar", "en_ext", 15),
     ("nilc-nlp/assin2", "validation", "portuguese_correction", "pt_ext", 10),
-    ("l3cube-pune/HinglishSenti", "train", "hinglish_to_english", "hi_ext", 10),
+    ("findnitai/english-to-hinglish", "train", "hinglish_to_english", "hi_ext", 10),
 ]
 
 CATEGORY_LANG_META = {
@@ -43,7 +43,7 @@ def _build_jfleg_prompts(ds, n, prefix):
             "gold": _pair(row["corrections"]),
             "min_output_tokens": 5,
             "already_correct": False,
-            "source": "dcavar/jfleg",
+            "source": "jhu-clsp/jfleg",
             **lang_meta,
         })
     return prompts
@@ -70,24 +70,24 @@ def _build_hinglish_prompts(ds, n, prefix):
     lang_meta = CATEGORY_LANG_META["hinglish_to_english"]
     prompts = []
     for i, row in enumerate(ds.select(range(min(n, len(ds))))):
+        translation = row["translation"]
         prompts.append({
             "id": f"{prefix}_{i + 1}",
             "instruction": "Translate this Hinglish text to English.",
-            "input": row["text"],
-            "gold": _pair([row["text"], row["text"]]),
+            "input": translation["hi_ng"],
+            "gold": _pair([translation["en"], translation["en"]]),
             "min_output_tokens": 5,
             "already_correct": False,
-            "source": "l3cube-pune/HinglishSenti",
-            "gold_is_placeholder": True,
+            "source": "findnitai/english-to-hinglish",
             **lang_meta,
         })
     return prompts
 
 
 BUILDERS = {
-    "dcavar/jfleg": _build_jfleg_prompts,
+    "jhu-clsp/jfleg": _build_jfleg_prompts,
     "nilc-nlp/assin2": _build_assin2_prompts,
-    "l3cube-pune/HinglishSenti": _build_hinglish_prompts,
+    "findnitai/english-to-hinglish": _build_hinglish_prompts,
 }
 
 
