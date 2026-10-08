@@ -2,7 +2,7 @@
   "version": "1.1.0",
   "description": "Multilingual evaluation dataset for AI Keyboard SLM benchmarking. v0.1 pilot set - 34 prompts across 9 categories.",
   "note": "This is a pilot evaluation set. For publication-grade results expand to 150+ prompts per reviewer recommendations. Human evaluation is strongly recommended alongside these automated metrics since BLEU/ROUGE/chrF cannot fully judge rewriting quality.",
-  "total_prompts": 68,
+  "total_prompts": 168,
   "categories": [
     {
       "id": "hinglish_to_english",
@@ -798,6 +798,1206 @@
           "input_lang": "en",
           "output_lang": "en",
           "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_16",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "For not use car .",
+          "gold": [
+            "Not for use with a car . ",
+            "Do not use in the car . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_17",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Thus even today sex is considered as the least important topic in many parts of India .",
+          "gold": [
+            "Thus , even today , sex is considered as the least important topic in may parts of India . ",
+            "Thus , even today , sex is considered the least important topic in many parts of India . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_18",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "I want to talk about nocive or bad products like alcohol , hair spray and cigarrets .",
+          "gold": [
+            "I want to talk about nocive or bad products like alcohol , hair spray and cigarettes . ",
+            "I want to talk about harmful or bad products like alcohol , hair spray and cigarettes . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_19",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "For example they can play football whenever they want but the olders can not .",
+          "gold": [
+            "For example , they can play football whenever they want , but the elders cannot . ",
+            "For example , they can play football whenever they want but the others can not . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_20",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "There are several reason .",
+          "gold": [
+            "There are several reasons . ",
+            "There are several reasons . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_21",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "4:they have a big chance to prepare for their future life",
+          "gold": [
+            "Fourth , they have a great chance to prepare for their future life . ",
+            "Point four is that they have a big chance to prepare for their future life . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_22",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "One person if do n't have good health that means so many things they could lost .",
+          "gold": [
+            "If a person does n't have good health , so many things could be lost . ",
+            "If one person does not have good health , that means they could lose so many things . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_23",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "because they spent time unmeaningful subjects .",
+          "gold": [
+            "They spent time in subjects that were not meaningful . ",
+            "They spent time on unmeaningful subjects . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_24",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "And young people spend time more ther lifestile .",
+          "gold": [
+            "And young people spend more time on their lifestyles . ",
+            "And young people spend more time on their lifestyle . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_25",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "We have to know this problem it 's serious but almost people doens't know about this .",
+          "gold": [
+            "This is a serious problem , but most people are unaware of it . ",
+            "We have to know this problem is serious but most people do n't know about this . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_26",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Today , MBA students with a background in engineering are in high demand .",
+          "gold": [
+            "Today , MBA students with a background in engineering are in high demand . ",
+            "Today , MBA students with a background in engineering are in high demand . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_27",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "So the school try learning the students a bit in every science exist .",
+          "gold": [
+            "So the school tries teaching the students a bit of every science which exists . ",
+            "So the school tried teaching the students a bit about every science that exists . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_28",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "I think they have to get skill on it .",
+          "gold": [
+            "I think they have to get skilled in it . ",
+            "I think they have to put skill into it . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_29",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "I will explain my points of views in the following paragraphs .",
+          "gold": [
+            "I will explain my point of view in the following paragraphs . ",
+            "I will explain my points of view in the following paragraphs . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_30",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "He thinks differently from other people and he succeded .",
+          "gold": [
+            "He thinks differently than others and he has succeeded . ",
+            "He thinks differently than other people and he succeeded . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_31",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "And it was very easy to me to understand why he always brang bad marks at home .",
+          "gold": [
+            "I could very easily understand why he would always bring bad marks home . ",
+            "And it was very easy for me to understand why he always brought bad marks home . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_32",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "However , are these things all good to people ?",
+          "gold": [
+            "However , are these things good to all people ? ",
+            "However , are all these things good for people ? "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_33",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Very soon they will run out at the current rate of utilisation .",
+          "gold": [
+            "They will run out very soon at the current rate of utilization . ",
+            "Soon they will run out , based on the current rate of utilization . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_34",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "In the lecture , however , professor oppose the reading statement .",
+          "gold": [
+            "In the lecture , however , the professor opposed reading the statement . ",
+            "In the lecture , however , the professor opposed the statement in the reading . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_35",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "But YOU have to create these opportunities .",
+          "gold": [
+            "You have to create these opportunities . ",
+            "But YOU have to create these opportunities . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_36",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Throughts our lives needs talk about our familys .",
+          "gold": [
+            "Throughout our lives , we need to talk about our families . ",
+            "Throughout our lives , we need to talk about our families . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_37",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "They try new things .",
+          "gold": [
+            "They try new things . ",
+            "They try new things . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_38",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "if you want a product you give create a beautiful image around it if you want sell it .",
+          "gold": [
+            "if you want to develop a product you create a beautiful image around it if you want sell it . ",
+            "If you want to sell a product , you must create a beautiful image around it . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_39",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Secondly the place of the film must must be very clear and chir must be relax etc .",
+          "gold": [
+            "Secondly , the location of the film must must be very clear and the director must be relaxed , etc . ",
+            "Second , the place that is being filmed must be very clear and the chin must be relaxed , etc . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_40",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "and will put you maind on a non-stop learning ...",
+          "gold": [
+            "And it will put your mind into non-stop learning . ",
+            "And will put your mind on a non-stop learning ... "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_41",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "this will the proof of speeding offense so that polices can easily catch them. .",
+          "gold": [
+            "This will prove the speeding offense so that the police can easily catch them . ",
+            "This will be the proof of speeding offense so that the police can easily catch them . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_42",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "In today 's Compuer skill is first important life skill .",
+          "gold": [
+            "In today 's world Computer skills are the first important life skill . ",
+            "Today , computer skills are the most important life skill . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_43",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "He last choosed to learn truth .",
+          "gold": [
+            "Lastly , he chose to learn the truth . ",
+            "He at last chose to learn the truth . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_44",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "I never have stopped myself to think this , but this is a real possibility for the fucture .",
+          "gold": [
+            "I have never stopped myself to think this , but this is a real possibility for the future . ",
+            "I have never stopped to think about this , but this is a real possibility for the future . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_45",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Young has his own field and word on it hard , and do more benefits to the society .",
+          "gold": [
+            "Young has his own field and works hard on it , and it provides more benefits to society . ",
+            "Young has his own field and works hard to do more benefit to the society . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_46",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "and about the new information there is editors .",
+          "gold": [
+            "There are editors to review the new information . ",
+            "And about the new information there are editors . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_47",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "It so expensive that only those people can do this besides of their allday living .",
+          "gold": [
+            "It so expensive that only those people can do this , factoring in their daily living expenses . ",
+            "It is so expensive that it is the only thing those people can do besides their daily living . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_48",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "They make very high profits year after yaer and the numbers also increase year after year .",
+          "gold": [
+            "They make very high profits year after year and the numbers also increase year after year . ",
+            "They make very high profits year after year and their numbers also increase year after year . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_49",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "For this reason , the number of cars would be decrease in the future .",
+          "gold": [
+            "For this reason , the number of cars would decrease in the future . ",
+            "For this reason , the number of cars will decrease in the future . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_50",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "So he took upon himself to narrow his research on this subject which was a mystery to the world .",
+          "gold": [
+            "So he took it upon himself to narrow his research on this subject , which was a mystery to the world . ",
+            "So he took it upon himself to narrow his research to a subject which was a mystery to the world . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_51",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Others who do n't have this concept they will sell uncerfied wood .",
+          "gold": [
+            "Others who do n't understand this concept sell uncertified wood . ",
+            "Others who do n't understand this concept will sell uncertified wood . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_52",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "I did n't have self-confidence .",
+          "gold": [
+            "I did n't have self confidence . ",
+            "I did n't have self-confidence . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_53",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "So It will be good situstion .",
+          "gold": [
+            "It will be good situation . ",
+            "So it will be a good situation . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_54",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Also , I have traveled in a group without tour guide .",
+          "gold": [
+            "Also , I have traveled in a group without tour guide . ",
+            "Also , I have traveled in a group without a tour guide . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_55",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "so this test is very important with theirs .",
+          "gold": [
+            "This test is very important to them . ",
+            "So this test is very important to them . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_56",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Otherwise , it will be a problem for us to understand certain thing in life .",
+          "gold": [
+            "Otherwise , it will be a problem for us to understand certain things in life . ",
+            "Otherwise , it will be a problem for us to understand certain things in life . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_57",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "I myself like to participate in kind of activities and meet many people who would like to do .",
+          "gold": [
+            "I myself like to participate in these kinds of activities and meet many people who like to do the same thing . ",
+            "I personally like to participate in all kinds of activities and meet many people like to as well . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_58",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Second the amount of treasure locations are implausibly large .",
+          "gold": [
+            "Second , the amount of treasure locations is implausibly large . ",
+            "Second , the number of treasure locations are implausibly large . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_59",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "He mainly concetrate on the questions asked him at the time of interview .",
+          "gold": [
+            "He mainly concentrated on the questions that were asked of him at the time of the interview . ",
+            "He mainly concentrated on the questions that he was asked at the time of the interview . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_60",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Because the fashional culture has been changed .",
+          "gold": [
+            "Because the fashion culture has changed . ",
+            "Because the fashion culture has changed . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_61",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "actually that was so unstable trip .",
+          "gold": [
+            "Actually , that was an unstable trip . ",
+            "Actually , that was an unstable trip . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_62",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "It is obvious that after returning i was tired and the night is meant to sleep ! .",
+          "gold": [
+            "It was obvious after returning that I was tired , and the night is meant to sleep ! ",
+            "It is obvious that after returning I was tired and the night is meant for sleeping ! . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_63",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Nowadays , we need a person who are capable of all sorts of works .",
+          "gold": [
+            "Nowadays , we need a person who is capable of all sorts of work . ",
+            "Nowadays , we need a person who is capable of all sorts of works . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_64",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Finally , fish farming relates to long term wastefulness whcih can pollute the sea .",
+          "gold": [
+            "Finally , fish farming relates to long-term wastefulness , which can pollute the sea . ",
+            "Finally , fish farming is related to long term wastefulness which can pollute the sea . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_ext_65",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Now I have outstanding scores .",
+          "gold": [
+            "Now I have outstanding scores . ",
+            "Now I have outstanding scores . "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "jhu-clsp/jfleg",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_1",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "My town is a medium size city with eighty thousand inhabitants. It has a high density population bec",
+          "gold": [
+            "My town is a medium-sized city with eighty thousand inhabitants. It has a high-density population bec",
+            "My town is a medium-sized city with eighty thousand inhabitants. It has a high-density population bec"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_2",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Everyone has his own plans. People want to be a doctor, other want to be a teacher. I have my own pl",
+          "gold": [
+            "Everyone has his own plans. Some people want to be a doctor, others want to be a teacher. I have my own pl",
+            "Everyone has his own plans. Some people want to be a doctor, others want to be a teacher. I have my own pl"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_3",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Now days each family has more then 1 car for each one, this is only one of few reason that people us",
+          "gold": [
+            "Nowadays, each family has more than 1 car for each person, this is only one of several reasons why people us",
+            "Nowadays, each family has more than 1 car for each person, this is only one of several reasons why people us"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_4",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Furthermore, the biggest group of positive feeling students in the present is live with various nati",
+          "gold": [
+            "Furthermore, the biggest group of  with various nati",
+            "Furthermore, the biggest group of  with various nati"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_5",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "MORE THAN KIP FIT!\n\nDo you know mountain biking? Perhaps you think it´s only a sport. You´re wrong. ",
+          "gold": [
+            "MORE THAN KEEP FIT!\n\nDo you know about mountain biking? Perhaps you think it´s only a sport. You´re wrong. ",
+            "MORE THAN KEEP FIT!\n\nDo you know about mountain biking? Perhaps you think it´s only a sport. You´re wrong. "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_6",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Lucy Keyes\n\nLucy Keyes was the last thriller I´ve seen. \nI don´t recommend it to children lower than",
+          "gold": [
+            "Lucy Keyes\n\nLucy Keyes was the last thriller I saw. \nI don´t recommend it to children under",
+            "Lucy Keyes\n\nLucy Keyes was the last thriller I saw. \nI don´t recommend it to children under"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_7",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "The best place for young people in our aree is without doubt the lake.\nHere they can do many kinds o",
+          "gold": [
+            "The best place for young people in our area is without doubt the lake.\nHere they can do many kinds o",
+            "The best place for young people in our area is without doubt the lake.\nHere they can do many kinds o"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_8",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Dear husband,\nI hope you're fine.I remember all of you and miss my family.\nLeaving my country, Soaml",
+          "gold": [
+            "Dear husband,\nI hope you're fine. I remember all of you and miss my family.\nLeaving my country, Soaml",
+            "Dear husband,\nI hope you're fine. I remember all of you and miss my family.\nLeaving my country, Soaml"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_9",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "In the following decades revolution and civil smote many of the Powers of Europe, and new nations we",
+          "gold": [
+            "In the following decades, revolution and civil wars  many of the Powers of Europe, and new nations we",
+            "In the following decades, revolution and civil wars  many of the Powers of Europe, and new nations we"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_10",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "I really like to travel, but I like the most when I travel with friends. I a very good experience. I",
+          "gold": [
+            "I really like to travel, but I likethe most when I travel with friends. I  a very good experience. I",
+            "I really like to travel, but I likethe most when I travel with friends. I  a very good experience. I"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_11",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "People usually tell me I'm a cinema's enthusiast, and they are in the correct way. I prefer to spend",
+          "gold": [
+            "People usually tell me I'm a cinema enthusiast, and they are right. I prefer to spend",
+            "People usually tell me I'm a cinema enthusiast, and they are right. I prefer to spend"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_12",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "  In my opinion, public transport in my country will never improve because my country is so poor and",
+          "gold": [
+            "  In my opinion, public transport in my country will never improve, because my country is so poor and,",
+            "  In my opinion, public transport in my country will never improve, because my country is so poor and,"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_13",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "When we ask ourselves, how can we take care of the environment? The first thing that we think is the",
+          "gold": [
+            "When we ask ourselves how we can take care of the environment, the first thing that we think of is the",
+            "When we ask ourselves how we can take care of the environment, the first thing that we think of is the"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_14",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "I love sports but I did not get much opportunities to play a sport. I born in a village in India, my",
+          "gold": [
+            "I love sports but I do not get many opportunities to play a sport. I was born in a village in India. My",
+            "I love sports but I do not get many opportunities to play a sport. I was born in a village in India. My"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_15",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "A MISTAKE\nIt was summer holidays and Michael's family was in the airport waiting impatiently their f",
+          "gold": [
+            "A MISTAKE\nIt was the summer holidays and Michael's family were at the airport waiting impatiently for their f",
+            "A MISTAKE\nIt was the summer holidays and Michael's family were at the airport waiting impatiently for their f"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_16",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "So,my favourite sport in the present time it is street workout.I have been exercising this sport alr",
+          "gold": [
+            "So, my favourite sport at the present time is street workout. I have been doing this sport for a alr",
+            "So, my favourite sport at the present time is street workout. I have been doing this sport for a alr"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_17",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "So, it's my first attempt to create English text!\nI dare say what I was quite self-confident a few m",
+          "gold": [
+            "So, it's my first attempt to create English text!\n  I was quite self-confident a few m",
+            "So, it's my first attempt to create English text!\n  I was quite self-confident a few m"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_18",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Michael is a handsome and kind person. He lives next to his family's home. Michael got married his c",
+          "gold": [
+            "Michael is a handsome and kind person. He lives next to his family's home. Michael got married to his c",
+            "Michael is a handsome and kind person. He lives next to his family's home. Michael got married to his c"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_19",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "The light bulb.\nThe light bulb was created on 1879 by Thomas Alva Edison. This was one of the everyd",
+          "gold": [
+            "The light bulb.\nThe light bulb was created in 1879 by Thomas Alva Edison. This was one of the everyd",
+            "The light bulb.\nThe light bulb was created in 1879 by Thomas Alva Edison. This was one of the everyd"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_20",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "\nPeter looked at his watch and knew that he had to do something immediately. Tom friend of Peter sud",
+          "gold": [
+            "\nPeter looked at his watch and knew that he had to do something immediately. Tom, a friend of Peter's sud",
+            "\nPeter looked at his watch and knew that he had to do something immediately. Tom, a friend of Peter's sud"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_21",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Lately I have seen a very interesting announcement in International Sports Monthly magazine.\nI was i",
+          "gold": [
+            "Recently I saw a very interesting announcement in International Sports Monthly magazine.\nI was i",
+            "Recently I saw a very interesting announcement in International Sports Monthly magazine.\nI was i"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_22",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Describe your bedroom.\n\nMy bedroom is quite big. The wall of my bedroom are  white  and the floor is",
+          "gold": [
+            "Describe your bedroom.\n\nMy bedroom is quite big. The walls of my bedroom are white  and the floor is",
+            "Describe your bedroom.\n\nMy bedroom is quite big. The walls of my bedroom are white  and the floor is"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_23",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "I am living at São Carlos, in the countryside of São Paulo, from Brazil. In my city the environment'",
+          "gold": [
+            "I live in São Carlos, in the countryside of São Paulo, in Brazil. In my city, the environment'",
+            "I live in São Carlos, in the countryside of São Paulo, in Brazil. In my city, the environment'"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_24",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Environment is the sorrounding.there is no aleartness in our locality.they were busy in their own wo",
+          "gold": [
+            "The environment is our surroundings. There is no awareness in our locality. They are busy with their own wo",
+            "The environment is our surroundings. There is no awareness in our locality. They are busy with their own wo"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_25",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Managemant acountant practice is very important for organization to making decision about human reso",
+          "gold": [
+            "Management accounting practice is very important for an organization for making decisions about human reso",
+            "Management accounting practice is very important for an organization for making decisions about human reso"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_26",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "I have been in the USA last year, first in order to look for a job as a pharmacist but also, having ",
+          "gold": [
+            "I was in the USA last year, first in order to look for a job as a pharmacist, but also, having ",
+            "I was in the USA last year, first in order to look for a job as a pharmacist, but also, having "
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_27",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Environment is always a hurting problem in the world. There are company so much,they make our life p",
+          "gold": [
+            "The environment is always a  problem in the world. There , they make our life p",
+            "The environment is always a  problem in the world. There , they make our life p"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_28",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "Hi today i'm gonna talk about myself. My name is Abrar saeed Al-mubarak.I'm 13 years old.I live in S",
+          "gold": [
+            "Hi, today I'm gonna talk about myself. My name is Abrar saeed Al-mubarak. I'm 13 years old. I live in S",
+            "Hi, today I'm gonna talk about myself. My name is Abrar saeed Al-mubarak. I'm 13 years old. I live in S"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_29",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "My dear Daniel.\nAre you studing mathemathics for your exam? I hope you pass it with a good grade!\n\nI",
+          "gold": [
+            "My dear Daniel,\nAre you studying mathematics for your exam? I hope you pass it with a good grade!\n\nI",
+            "My dear Daniel,\nAre you studying mathematics for your exam? I hope you pass it with a good grade!\n\nI"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
+        },
+        {
+          "id": "en_wi_ext_30",
+          "instruction": "Fix the grammar in this sentence.",
+          "input": "This summer happened to me several things, I went to the beach, I went to the pool, or simply went f",
+          "gold": [
+            "This summer several things happened to me. I went to the beach, I went to the pool, or simply went f",
+            "This summer several things happened to me. I went to the beach, I went to the pool, or simply went f"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "martinsr/wi_locness",
+          "input_lang": "en",
+          "output_lang": "en",
+          "script_expected": "latin"
         }
       ]
     },
@@ -1081,6 +2281,313 @@
           "protected_values": [
             "@bhavik"
           ]
+        }
+      ]
+    },
+    {
+      "id": "hindi_keyboard",
+      "name": "Hindi Keyboard Pass-Through",
+      "description": "Real-world Hindi text sampled from Hindi Wikipedia, used as already-correct keyboard input",
+      "prompts": [
+        {
+          "id": "hi_kb_ext_1",
+          "instruction": "Is Hindi text ko theek karo.",
+          "input": "हम होंगे कामयाब ( का गिरिजा कुमार माथुर द्वारा किया गया हिंदी भावानुवाद) एक प्रत",
+          "gold": [
+            "हम होंगे कामयाब ( का गिरिजा कुमार माथुर द्वारा किया गया हिंदी भावानुवाद) एक प्रत",
+            "हम होंगे कामयाब ( का गिरिजा कुमार माथुर द्वारा किया गया हिंदी भावानुवाद) एक प्रत"
+          ],
+          "min_output_tokens": 3,
+          "already_correct": true,
+          "source": "wikimedia/wikipedia (20231101.hi)",
+          "input_lang": "hi",
+          "output_lang": "hi",
+          "script_expected": "devanagari"
+        },
+        {
+          "id": "hi_kb_ext_2",
+          "instruction": "Is Hindi text ko theek karo.",
+          "input": "दैनिक पूजा विधि हिन्दू धर्म की कई उपासना पद्धतियों में से एक है। ये एक दैनिक कर्",
+          "gold": [
+            "दैनिक पूजा विधि हिन्दू धर्म की कई उपासना पद्धतियों में से एक है। ये एक दैनिक कर्",
+            "दैनिक पूजा विधि हिन्दू धर्म की कई उपासना पद्धतियों में से एक है। ये एक दैनिक कर्"
+          ],
+          "min_output_tokens": 3,
+          "already_correct": true,
+          "source": "wikimedia/wikipedia (20231101.hi)",
+          "input_lang": "hi",
+          "output_lang": "hi",
+          "script_expected": "devanagari"
+        },
+        {
+          "id": "hi_kb_ext_3",
+          "instruction": "Is Hindi text ko theek karo.",
+          "input": "हिन्दी जिसके मानकीकृत रूप को मानक हिन्दी कहा जाता है, विश्व की एक प्रमुख भाषा है",
+          "gold": [
+            "हिन्दी जिसके मानकीकृत रूप को मानक हिन्दी कहा जाता है, विश्व की एक प्रमुख भाषा है",
+            "हिन्दी जिसके मानकीकृत रूप को मानक हिन्दी कहा जाता है, विश्व की एक प्रमुख भाषा है"
+          ],
+          "min_output_tokens": 3,
+          "already_correct": true,
+          "source": "wikimedia/wikipedia (20231101.hi)",
+          "input_lang": "hi",
+          "output_lang": "hi",
+          "script_expected": "devanagari"
+        },
+        {
+          "id": "hi_kb_ext_4",
+          "instruction": "Is Hindi text ko theek karo.",
+          "input": "फ़ारसी (), एक भाषा है जो ईरान, ताजिकिस्तान, अफ़गानिस्तान और उज़बेकिस्तान में बोल",
+          "gold": [
+            "फ़ारसी (), एक भाषा है जो ईरान, ताजिकिस्तान, अफ़गानिस्तान और उज़बेकिस्तान में बोल",
+            "फ़ारसी (), एक भाषा है जो ईरान, ताजिकिस्तान, अफ़गानिस्तान और उज़बेकिस्तान में बोल"
+          ],
+          "min_output_tokens": 3,
+          "already_correct": true,
+          "source": "wikimedia/wikipedia (20231101.hi)",
+          "input_lang": "hi",
+          "output_lang": "hi",
+          "script_expected": "devanagari"
+        },
+        {
+          "id": "hi_kb_ext_5",
+          "instruction": "Is Hindi text ko theek karo.",
+          "input": "देवनागरी भारतीय उपमहाद्वीप में प्रयुक्त प्राचीन ब्राह्मी लिपि पर आधारित बाएँ से",
+          "gold": [
+            "देवनागरी भारतीय उपमहाद्वीप में प्रयुक्त प्राचीन ब्राह्मी लिपि पर आधारित बाएँ से",
+            "देवनागरी भारतीय उपमहाद्वीप में प्रयुक्त प्राचीन ब्राह्मी लिपि पर आधारित बाएँ से"
+          ],
+          "min_output_tokens": 3,
+          "already_correct": true,
+          "source": "wikimedia/wikipedia (20231101.hi)",
+          "input_lang": "hi",
+          "output_lang": "hi",
+          "script_expected": "devanagari"
+        },
+        {
+          "id": "hi_kb_ext_6",
+          "instruction": "Is Hindi text ko theek karo.",
+          "input": "{{Infobox country\n| conventional_long_name = भारत गणराज्य\n| common_name",
+          "gold": [
+            "{{Infobox country\n| conventional_long_name = भारत गणराज्य\n| common_name",
+            "{{Infobox country\n| conventional_long_name = भारत गणराज्य\n| common_name"
+          ],
+          "min_output_tokens": 3,
+          "already_correct": true,
+          "source": "wikimedia/wikipedia (20231101.hi)",
+          "input_lang": "hi",
+          "output_lang": "hi",
+          "script_expected": "devanagari"
+        },
+        {
+          "id": "hi_kb_ext_7",
+          "instruction": "Is Hindi text ko theek karo.",
+          "input": "संस्कृत (संस्कृतम्, ) भारत की एक भाषा है। संस्कृत एक हिंद-आर्य भाषा है जो हिंद-य",
+          "gold": [
+            "संस्कृत (संस्कृतम्, ) भारत की एक भाषा है। संस्कृत एक हिंद-आर्य भाषा है जो हिंद-य",
+            "संस्कृत (संस्कृतम्, ) भारत की एक भाषा है। संस्कृत एक हिंद-आर्य भाषा है जो हिंद-य"
+          ],
+          "min_output_tokens": 3,
+          "already_correct": true,
+          "source": "wikimedia/wikipedia (20231101.hi)",
+          "input_lang": "hi",
+          "output_lang": "hi",
+          "script_expected": "devanagari"
+        },
+        {
+          "id": "hi_kb_ext_8",
+          "instruction": "Is Hindi text ko theek karo.",
+          "input": "हिंदू ( ; /ˈ h ɪ n d uː z / ) वे लोग हैं जो धार्मिक रूप से हिंदू धर्म का पालन कर",
+          "gold": [
+            "हिंदू ( ; /ˈ h ɪ n d uː z / ) वे लोग हैं जो धार्मिक रूप से हिंदू धर्म का पालन कर",
+            "हिंदू ( ; /ˈ h ɪ n d uː z / ) वे लोग हैं जो धार्मिक रूप से हिंदू धर्म का पालन कर"
+          ],
+          "min_output_tokens": 3,
+          "already_correct": true,
+          "source": "wikimedia/wikipedia (20231101.hi)",
+          "input_lang": "hi",
+          "output_lang": "hi",
+          "script_expected": "devanagari"
+        },
+        {
+          "id": "hi_kb_ext_9",
+          "instruction": "Is Hindi text ko theek karo.",
+          "input": "आलवार सन्त\n नयनार\nरविदास (रैदास)\nसूरदास\n तुलसीदास\n मीरा बाई\n कबीर\n रहीम\n त्यागरा",
+          "gold": [
+            "आलवार सन्त\n नयनार\nरविदास (रैदास)\nसूरदास\n तुलसीदास\n मीरा बाई\n कबीर\n रहीम\n त्यागरा",
+            "आलवार सन्त\n नयनार\nरविदास (रैदास)\nसूरदास\n तुलसीदास\n मीरा बाई\n कबीर\n रहीम\n त्यागरा"
+          ],
+          "min_output_tokens": 3,
+          "already_correct": true,
+          "source": "wikimedia/wikipedia (20231101.hi)",
+          "input_lang": "hi",
+          "output_lang": "hi",
+          "script_expected": "devanagari"
+        },
+        {
+          "id": "hi_kb_ext_10",
+          "instruction": "Is Hindi text ko theek karo.",
+          "input": "आराधना करने वाले को भक्त कहा जाता है। और भक्त समूह को भक्तों की संज्ञा दी जाती ह",
+          "gold": [
+            "आराधना करने वाले को भक्त कहा जाता है। और भक्त समूह को भक्तों की संज्ञा दी जाती ह",
+            "आराधना करने वाले को भक्त कहा जाता है। और भक्त समूह को भक्तों की संज्ञा दी जाती ह"
+          ],
+          "min_output_tokens": 3,
+          "already_correct": true,
+          "source": "wikimedia/wikipedia (20231101.hi)",
+          "input_lang": "hi",
+          "output_lang": "hi",
+          "script_expected": "devanagari"
+        },
+        {
+          "id": "hi_kb_ext_11",
+          "instruction": "Is Hindi text ko theek karo.",
+          "input": "पुनर्निर्देशित हिन्दू धर्म की शब्दावली \n\nशब्दकोश (अन्य वर्तनी: शब्दकोष) एक बडी स",
+          "gold": [
+            "पुनर्निर्देशित हिन्दू धर्म की शब्दावली \n\nशब्दकोश (अन्य वर्तनी: शब्दकोष) एक बडी स",
+            "पुनर्निर्देशित हिन्दू धर्म की शब्दावली \n\nशब्दकोश (अन्य वर्तनी: शब्दकोष) एक बडी स"
+          ],
+          "min_output_tokens": 3,
+          "already_correct": true,
+          "source": "wikimedia/wikipedia (20231101.hi)",
+          "input_lang": "hi",
+          "output_lang": "hi",
+          "script_expected": "devanagari"
+        },
+        {
+          "id": "hi_kb_ext_12",
+          "instruction": "Is Hindi text ko theek karo.",
+          "input": "जन गण मन, भारत का राष्ट्रगान है जो मूलतः बंगाली में गुरुदेव रवीन्द्रनाथ टैगोर द्",
+          "gold": [
+            "जन गण मन, भारत का राष्ट्रगान है जो मूलतः बंगाली में गुरुदेव रवीन्द्रनाथ टैगोर द्",
+            "जन गण मन, भारत का राष्ट्रगान है जो मूलतः बंगाली में गुरुदेव रवीन्द्रनाथ टैगोर द्"
+          ],
+          "min_output_tokens": 3,
+          "already_correct": true,
+          "source": "wikimedia/wikipedia (20231101.hi)",
+          "input_lang": "hi",
+          "output_lang": "hi",
+          "script_expected": "devanagari"
+        },
+        {
+          "id": "hi_kb_ext_13",
+          "instruction": "Is Hindi text ko theek karo.",
+          "input": "वन्दे मातरम् ( बाँग्ला: বন্দে মাতরম)  बंकिमचन्द्र चट्टोपाध्याय द्वारा संस्कृत बा",
+          "gold": [
+            "वन्दे मातरम् ( बाँग्ला: বন্দে মাতরম)  बंकिमचन्द्र चट्टोपाध्याय द्वारा संस्कृत बा",
+            "वन्दे मातरम् ( बाँग्ला: বন্দে মাতরম)  बंकिमचन्द्र चट्टोपाध्याय द्वारा संस्कृत बा"
+          ],
+          "min_output_tokens": 3,
+          "already_correct": true,
+          "source": "wikimedia/wikipedia (20231101.hi)",
+          "input_lang": "hi",
+          "output_lang": "hi",
+          "script_expected": "devanagari"
+        },
+        {
+          "id": "hi_kb_ext_14",
+          "instruction": "Is Hindi text ko theek karo.",
+          "input": "भारत राज्यों का एक संघ है। इसमें 28 राज्य और 8 केन्द्र शासित प्रदेश हैं। ये राज्",
+          "gold": [
+            "भारत राज्यों का एक संघ है। इसमें 28 राज्य और 8 केन्द्र शासित प्रदेश हैं। ये राज्",
+            "भारत राज्यों का एक संघ है। इसमें 28 राज्य और 8 केन्द्र शासित प्रदेश हैं। ये राज्"
+          ],
+          "min_output_tokens": 3,
+          "already_correct": true,
+          "source": "wikimedia/wikipedia (20231101.hi)",
+          "input_lang": "hi",
+          "output_lang": "hi",
+          "script_expected": "devanagari"
+        },
+        {
+          "id": "hi_kb_ext_15",
+          "instruction": "Is Hindi text ko theek karo.",
+          "input": "सप्ताह के दिन \n\nएक सप्ताह या हफ़्ते में सात दिन होते हैं। हिन्दी में ये निम्न ना",
+          "gold": [
+            "सप्ताह के दिन \n\nएक सप्ताह या हफ़्ते में सात दिन होते हैं। हिन्दी में ये निम्न ना",
+            "सप्ताह के दिन \n\nएक सप्ताह या हफ़्ते में सात दिन होते हैं। हिन्दी में ये निम्न ना"
+          ],
+          "min_output_tokens": 3,
+          "already_correct": true,
+          "source": "wikimedia/wikipedia (20231101.hi)",
+          "input_lang": "hi",
+          "output_lang": "hi",
+          "script_expected": "devanagari"
+        },
+        {
+          "id": "hi_kb_ext_16",
+          "instruction": "Is Hindi text ko theek karo.",
+          "input": "चैत्र हिंदू पंचांग का पहला मास है। इसी महीने से भारतीय नववर्ष आरम्भ होता है। हिं",
+          "gold": [
+            "चैत्र हिंदू पंचांग का पहला मास है। इसी महीने से भारतीय नववर्ष आरम्भ होता है। हिं",
+            "चैत्र हिंदू पंचांग का पहला मास है। इसी महीने से भारतीय नववर्ष आरम्भ होता है। हिं"
+          ],
+          "min_output_tokens": 3,
+          "already_correct": true,
+          "source": "wikimedia/wikipedia (20231101.hi)",
+          "input_lang": "hi",
+          "output_lang": "hi",
+          "script_expected": "devanagari"
+        },
+        {
+          "id": "hi_kb_ext_17",
+          "instruction": "Is Hindi text ko theek karo.",
+          "input": "मास या महीना, काल मापन की एक ईकाई है। भारतीय कालगणना में एक वर्ष में १२ मास होते",
+          "gold": [
+            "मास या महीना, काल मापन की एक ईकाई है। भारतीय कालगणना में एक वर्ष में १२ मास होते",
+            "मास या महीना, काल मापन की एक ईकाई है। भारतीय कालगणना में एक वर्ष में १२ मास होते"
+          ],
+          "min_output_tokens": 3,
+          "already_correct": true,
+          "source": "wikimedia/wikipedia (20231101.hi)",
+          "input_lang": "hi",
+          "output_lang": "hi",
+          "script_expected": "devanagari"
+        },
+        {
+          "id": "hi_kb_ext_18",
+          "instruction": "Is Hindi text ko theek karo.",
+          "input": "यूनिकोड प्रत्येक अक्षर के लिए एक विशेष संख्या प्रदान करता है, चाहे कोई भी कम्प्य",
+          "gold": [
+            "यूनिकोड प्रत्येक अक्षर के लिए एक विशेष संख्या प्रदान करता है, चाहे कोई भी कम्प्य",
+            "यूनिकोड प्रत्येक अक्षर के लिए एक विशेष संख्या प्रदान करता है, चाहे कोई भी कम्प्य"
+          ],
+          "min_output_tokens": 3,
+          "already_correct": true,
+          "source": "wikimedia/wikipedia (20231101.hi)",
+          "input_lang": "hi",
+          "output_lang": "hi",
+          "script_expected": "devanagari"
+        },
+        {
+          "id": "hi_kb_ext_19",
+          "instruction": "Is Hindi text ko theek karo.",
+          "input": "२००३ \nजनवरी | \nफरवरी | \nमार्च |\nअप्रैल | \nमई | \nजून | \nजुलाई | \n अगस्त  | \nसितम्",
+          "gold": [
+            "२००३ \nजनवरी | \nफरवरी | \nमार्च |\nअप्रैल | \nमई | \nजून | \nजुलाई | \n अगस्त  | \nसितम्",
+            "२००३ \nजनवरी | \nफरवरी | \nमार्च |\nअप्रैल | \nमई | \nजून | \nजुलाई | \n अगस्त  | \nसितम्"
+          ],
+          "min_output_tokens": 3,
+          "already_correct": true,
+          "source": "wikimedia/wikipedia (20231101.hi)",
+          "input_lang": "hi",
+          "output_lang": "hi",
+          "script_expected": "devanagari"
+        },
+        {
+          "id": "hi_kb_ext_20",
+          "instruction": "Is Hindi text ko theek karo.",
+          "input": "भारत बहुत सारी भाषाओं का देश है, परन्तु सरकारी कामकाज में व्यवहार में लायी जाने",
+          "gold": [
+            "भारत बहुत सारी भाषाओं का देश है, परन्तु सरकारी कामकाज में व्यवहार में लायी जाने",
+            "भारत बहुत सारी भाषाओं का देश है, परन्तु सरकारी कामकाज में व्यवहार में लायी जाने"
+          ],
+          "min_output_tokens": 3,
+          "already_correct": true,
+          "source": "wikimedia/wikipedia (20231101.hi)",
+          "input_lang": "hi",
+          "output_lang": "hi",
+          "script_expected": "devanagari"
         }
       ]
     }

@@ -36,6 +36,7 @@ def test_total_prompt_count():
         data = json.load(f)
     total = sum(len(cat["prompts"]) for cat in data["categories"])
     assert total == data["total_prompts"]
+    assert total >= 150
 
 
 def test_already_correct_prompts_exist():

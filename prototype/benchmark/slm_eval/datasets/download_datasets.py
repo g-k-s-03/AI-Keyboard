@@ -8,18 +8,32 @@ from pathlib import Path
 
 DATASET_PATH = Path(__file__).parent / "eval_dataset.json"
 
-# (huggingface dataset id, split, category id, id prefix, sample count)
+# (huggingface dataset id, config or None, split, category id, id prefix,
+#  sample count, streaming)
 DOWNLOAD_SPECS = [
-    ("jhu-clsp/jfleg", "validation", "english_grammar", "en_ext", 15),
-    ("nilc-nlp/assin2", "validation", "portuguese_correction", "pt_ext", 10),
-    ("findnitai/english-to-hinglish", "train", "hinglish_to_english", "hi_ext", 10),
+    ("jhu-clsp/jfleg", None, "validation", "english_grammar", "en_ext", 50, False),
+    ("nilc-nlp/assin2", None, "validation", "portuguese_correction", "pt_ext", 10, False),
+    ("findnitai/english-to-hinglish", None, "train", "hinglish_to_english", "hi_ext", 10, False),
+    ("martinsr/wi_locness", None, "train", "english_grammar", "en_wi_ext", 30, False),
+    # google-research-datasets/tydiqa has no Hindi rows at all (its 11 languages
+    # are en/ar/bn/fi/id/ja/sw/ko/ru/te/th) -- using real Hindi Wikipedia instead,
+    # streamed so we don't pull the entire dump for 20 snippets.
+    ("wikimedia/wikipedia", "20231101.hi", "train", "hindi_keyboard", "hi_kb_ext", 20, True),
 ]
+
+JFLEG_MAX_SENTENCE_LEN = 100  # keyboard-realistic length
+HINDI_SNIPPET_LEN = 80
 
 CATEGORY_LANG_META = {
     "english_grammar": {"input_lang": "en", "output_lang": "en", "script_expected": "latin"},
     "portuguese_correction": {"input_lang": "pt", "output_lang": "pt", "script_expected": "latin"},
     "hinglish_to_english": {"input_lang": "hi-Latn", "output_lang": "en", "script_expected": "latin"},
+    "hindi_keyboard": {"input_lang": "hi", "output_lang": "hi", "script_expected": "devanagari"},
 }
+
+
+def _is_devanagari(text: str) -> bool:
+    return any("ऀ" <= c <= "ॿ" for c in text)
 
 
 def _pair(values):
@@ -35,17 +49,78 @@ def _pair(values):
 def _build_jfleg_prompts(ds, n, prefix):
     lang_meta = CATEGORY_LANG_META["english_grammar"]
     prompts = []
-    for i, row in enumerate(ds.select(range(min(n, len(ds))))):
+    count = 0
+    for row in ds:
+        if count >= n:
+            break
+        sentence = row["sentence"].strip()
+        if not sentence or len(sentence) >= JFLEG_MAX_SENTENCE_LEN:
+            continue
         prompts.append({
-            "id": f"{prefix}_{i + 1}",
+            "id": f"{prefix}_{count + 1}",
             "instruction": "Fix the grammar in this sentence.",
-            "input": row["sentence"],
+            "input": sentence,
             "gold": _pair(row["corrections"]),
             "min_output_tokens": 5,
             "already_correct": False,
             "source": "jhu-clsp/jfleg",
             **lang_meta,
         })
+        count += 1
+    return prompts
+
+
+def _apply_edits_truncated(text: str, edits: dict, max_len: int = 100):
+    """Truncate text to max_len and apply only the edit spans that fall
+    fully inside that window, so a cut-off word at the boundary never gets
+    corrupted by a partially-included edit. Returns (truncated, corrected)
+    or None if no edit lands inside the window."""
+    truncated = text[:max_len]
+    starts = edits.get("start", [])
+    ends = edits.get("end", [])
+    texts = edits.get("text", [])
+
+    in_window = [
+        (s, e, t) for s, e, t in zip(starts, ends, texts)
+        if e <= len(truncated)
+    ]
+    if not in_window:
+        return None
+
+    corrected = truncated
+    for s, e, t in sorted(in_window, key=lambda x: x[0], reverse=True):
+        corrected = corrected[:s] + (t or "") + corrected[e:]
+
+    if corrected.strip() == truncated.strip():
+        return None
+    return truncated, corrected
+
+
+def _build_wi_locness_prompts(ds, n, prefix):
+    lang_meta = CATEGORY_LANG_META["english_grammar"]
+    prompts = []
+    count = 0
+    for row in ds:
+        if count >= n:
+            break
+        cefr = (row.get("cefr") or "")
+        if not cefr.startswith("A"):
+            continue
+        result = _apply_edits_truncated(row["text"], row["edits"], max_len=100)
+        if result is None:
+            continue
+        truncated, corrected = result
+        prompts.append({
+            "id": f"{prefix}_{count + 1}",
+            "instruction": "Fix the grammar in this sentence.",
+            "input": truncated,
+            "gold": _pair([corrected, corrected]),
+            "min_output_tokens": 5,
+            "already_correct": False,
+            "source": "martinsr/wi_locness",
+            **lang_meta,
+        })
+        count += 1
     return prompts
 
 
@@ -84,10 +159,36 @@ def _build_hinglish_prompts(ds, n, prefix):
     return prompts
 
 
+def _build_hindi_wikipedia_prompts(ds, n, prefix):
+    lang_meta = CATEGORY_LANG_META["hindi_keyboard"]
+    prompts = []
+    count = 0
+    for row in ds:
+        if count >= n:
+            break
+        snippet = row["text"].strip()[:HINDI_SNIPPET_LEN].strip()
+        if not snippet or not _is_devanagari(snippet):
+            continue
+        prompts.append({
+            "id": f"{prefix}_{count + 1}",
+            "instruction": "Is Hindi text ko theek karo.",
+            "input": snippet,
+            "gold": _pair([snippet, snippet]),
+            "min_output_tokens": 3,
+            "already_correct": True,
+            "source": "wikimedia/wikipedia (20231101.hi)",
+            **lang_meta,
+        })
+        count += 1
+    return prompts
+
+
 BUILDERS = {
     "jhu-clsp/jfleg": _build_jfleg_prompts,
     "nilc-nlp/assin2": _build_assin2_prompts,
     "findnitai/english-to-hinglish": _build_hinglish_prompts,
+    "martinsr/wi_locness": _build_wi_locness_prompts,
+    "wikimedia/wikipedia": _build_hindi_wikipedia_prompts,
 }
 
 
@@ -123,14 +224,17 @@ def run_downloads() -> dict:
     added_counts = {}
     errors = []
 
-    for dataset_id, split, category_id, prefix, n_samples in DOWNLOAD_SPECS:
+    for dataset_id, config, split, category_id, prefix, n_samples, streaming in DOWNLOAD_SPECS:
         category = categories_by_id.get(category_id)
         if category is None:
             errors.append(f"{dataset_id}: category '{category_id}' not found in eval_dataset.json")
             continue
 
         try:
-            ds = load_dataset(dataset_id, split=split)
+            if config:
+                ds = load_dataset(dataset_id, config, split=split, streaming=streaming)
+            else:
+                ds = load_dataset(dataset_id, split=split, streaming=streaming)
         except Exception as e:
             print(f"WARNING: failed to load '{dataset_id}' ({split}): {e}")
             errors.append(f"{dataset_id}: {e}")
