@@ -311,156 +311,6 @@
           "script_expected": "latin",
           "min_output_tokens": 5,
           "already_correct": false
-        },
-        {
-          "id": "pt_ext_1",
-          "instruction": "Corrija o português nesta frase.",
-          "input": "Uma pequena menina está sorrindo e usando um nariz falso e óculos",
-          "gold": [
-            "A menina pequena está sorrindo e usando um nariz falso e óculos",
-            "A menina pequena está sorrindo e usando um nariz falso e óculos"
-          ],
-          "min_output_tokens": 5,
-          "already_correct": false,
-          "source": "nilc-nlp/assin2",
-          "input_lang": "pt",
-          "output_lang": "pt",
-          "script_expected": "latin"
-        },
-        {
-          "id": "pt_ext_2",
-          "instruction": "Corrija o português nesta frase.",
-          "input": "Um grupo de pessoas jogando futebol está correndo no campo",
-          "gold": [
-            "Um grupo de jogadores de futebol está correndo no campo",
-            "Um grupo de jogadores de futebol está correndo no campo"
-          ],
-          "min_output_tokens": 5,
-          "already_correct": false,
-          "source": "nilc-nlp/assin2",
-          "input_lang": "pt",
-          "output_lang": "pt",
-          "script_expected": "latin"
-        },
-        {
-          "id": "pt_ext_3",
-          "instruction": "Corrija o português nesta frase.",
-          "input": "O homem está empinando uma motocicleta num chão que é praticamente árido",
-          "gold": [
-            "O homem está desmontando de uma moto para um chão que é praticamente árido",
-            "O homem está desmontando de uma moto para um chão que é praticamente árido"
-          ],
-          "min_output_tokens": 5,
-          "already_correct": false,
-          "source": "nilc-nlp/assin2",
-          "input_lang": "pt",
-          "output_lang": "pt",
-          "script_expected": "latin"
-        },
-        {
-          "id": "pt_ext_4",
-          "instruction": "Corrija o português nesta frase.",
-          "input": "Um cervo está saltando sobre uma cerca de ferro",
-          "gold": [
-            "O cervo está saltando sobre a cerca",
-            "O cervo está saltando sobre a cerca"
-          ],
-          "min_output_tokens": 5,
-          "already_correct": false,
-          "source": "nilc-nlp/assin2",
-          "input_lang": "pt",
-          "output_lang": "pt",
-          "script_expected": "latin"
-        },
-        {
-          "id": "pt_ext_5",
-          "instruction": "Corrija o português nesta frase.",
-          "input": "O homem está tocando a flauta",
-          "gold": [
-            "Um homem está tocando uma flauta",
-            "Um homem está tocando uma flauta"
-          ],
-          "min_output_tokens": 5,
-          "already_correct": false,
-          "source": "nilc-nlp/assin2",
-          "input_lang": "pt",
-          "output_lang": "pt",
-          "script_expected": "latin"
-        },
-        {
-          "id": "pt_ext_6",
-          "instruction": "Corrija o português nesta frase.",
-          "input": "Tofu está sendo fatiado por uma mulher",
-          "gold": [
-            "Uma menina está derretendo dois pedaços de manteiga juntos",
-            "Uma menina está derretendo dois pedaços de manteiga juntos"
-          ],
-          "min_output_tokens": 5,
-          "already_correct": false,
-          "source": "nilc-nlp/assin2",
-          "input_lang": "pt",
-          "output_lang": "pt",
-          "script_expected": "latin"
-        },
-        {
-          "id": "pt_ext_7",
-          "instruction": "Corrija o português nesta frase.",
-          "input": "Um homem está desenhando algumas figuras",
-          "gold": [
-            "Uma pessoa está desenhando algumas figuras",
-            "Uma pessoa está desenhando algumas figuras"
-          ],
-          "min_output_tokens": 5,
-          "already_correct": false,
-          "source": "nilc-nlp/assin2",
-          "input_lang": "pt",
-          "output_lang": "pt",
-          "script_expected": "latin"
-        },
-        {
-          "id": "pt_ext_8",
-          "instruction": "Corrija o português nesta frase.",
-          "input": "Alguém está despejando ingredientes em uma panela",
-          "gold": [
-            "Alguém está adicionando ingredientes em uma panela",
-            "Alguém está adicionando ingredientes em uma panela"
-          ],
-          "min_output_tokens": 5,
-          "already_correct": false,
-          "source": "nilc-nlp/assin2",
-          "input_lang": "pt",
-          "output_lang": "pt",
-          "script_expected": "latin"
-        },
-        {
-          "id": "pt_ext_9",
-          "instruction": "Corrija o português nesta frase.",
-          "input": "Um jogador de futebol de campo está marcando um gol",
-          "gold": [
-            "Um jogador de futebol está marcando um gol",
-            "Um jogador de futebol está marcando um gol"
-          ],
-          "min_output_tokens": 5,
-          "already_correct": false,
-          "source": "nilc-nlp/assin2",
-          "input_lang": "pt",
-          "output_lang": "pt",
-          "script_expected": "latin"
-        },
-        {
-          "id": "pt_ext_10",
-          "instruction": "Corrija o português nesta frase.",
-          "input": "Um homem negro está andando perto de uma loja em uma cidade grande",
-          "gold": [
-            "Um homem negro está andando próximo a um prédio em uma grande cidade",
-            "Um homem negro está andando próximo a um prédio em uma grande cidade"
-          ],
-          "min_output_tokens": 5,
-          "already_correct": false,
-          "source": "nilc-nlp/assin2",
-          "input_lang": "pt",
-          "output_lang": "pt",
-          "script_expected": "latin"
         }
       ]
     },
@@ -2588,6 +2438,163 @@
           "input_lang": "hi",
           "output_lang": "hi",
           "script_expected": "devanagari"
+        }
+      ]
+    },
+    {
+      "id": "portuguese_paraphrase",
+      "name": "Portuguese Paraphrase / Semantic Similarity",
+      "description": "ASSIN2-sourced premise/hypothesis pairs: natural paraphrases of the same scene, not grammar errors",
+      "prompts": [
+        {
+          "id": "pt_ext_1",
+          "instruction": "Parafraseie esta frase naturalmente em português. Retorne APENAS a frase parafraseada.",
+          "input": "Uma pequena menina está sorrindo e usando um nariz falso e óculos",
+          "gold": [
+            "A menina pequena está sorrindo e usando um nariz falso e óculos",
+            "A menina pequena está sorrindo e usando um nariz falso e óculos"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "nilc-nlp/assin2",
+          "input_lang": "pt",
+          "output_lang": "pt",
+          "script_expected": "latin"
+        },
+        {
+          "id": "pt_ext_2",
+          "instruction": "Parafraseie esta frase naturalmente em português. Retorne APENAS a frase parafraseada.",
+          "input": "Um grupo de pessoas jogando futebol está correndo no campo",
+          "gold": [
+            "Um grupo de jogadores de futebol está correndo no campo",
+            "Um grupo de jogadores de futebol está correndo no campo"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "nilc-nlp/assin2",
+          "input_lang": "pt",
+          "output_lang": "pt",
+          "script_expected": "latin"
+        },
+        {
+          "id": "pt_ext_3",
+          "instruction": "Parafraseie esta frase naturalmente em português. Retorne APENAS a frase parafraseada.",
+          "input": "O homem está empinando uma motocicleta num chão que é praticamente árido",
+          "gold": [
+            "O homem está desmontando de uma moto para um chão que é praticamente árido",
+            "O homem está desmontando de uma moto para um chão que é praticamente árido"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "nilc-nlp/assin2",
+          "input_lang": "pt",
+          "output_lang": "pt",
+          "script_expected": "latin"
+        },
+        {
+          "id": "pt_ext_4",
+          "instruction": "Parafraseie esta frase naturalmente em português. Retorne APENAS a frase parafraseada.",
+          "input": "Um cervo está saltando sobre uma cerca de ferro",
+          "gold": [
+            "O cervo está saltando sobre a cerca",
+            "O cervo está saltando sobre a cerca"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "nilc-nlp/assin2",
+          "input_lang": "pt",
+          "output_lang": "pt",
+          "script_expected": "latin"
+        },
+        {
+          "id": "pt_ext_5",
+          "instruction": "Parafraseie esta frase naturalmente em português. Retorne APENAS a frase parafraseada.",
+          "input": "O homem está tocando a flauta",
+          "gold": [
+            "Um homem está tocando uma flauta",
+            "Um homem está tocando uma flauta"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "nilc-nlp/assin2",
+          "input_lang": "pt",
+          "output_lang": "pt",
+          "script_expected": "latin"
+        },
+        {
+          "id": "pt_ext_6",
+          "instruction": "Parafraseie esta frase naturalmente em português. Retorne APENAS a frase parafraseada.",
+          "input": "Tofu está sendo fatiado por uma mulher",
+          "gold": [
+            "Uma menina está derretendo dois pedaços de manteiga juntos",
+            "Uma menina está derretendo dois pedaços de manteiga juntos"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "nilc-nlp/assin2",
+          "input_lang": "pt",
+          "output_lang": "pt",
+          "script_expected": "latin"
+        },
+        {
+          "id": "pt_ext_7",
+          "instruction": "Parafraseie esta frase naturalmente em português. Retorne APENAS a frase parafraseada.",
+          "input": "Um homem está desenhando algumas figuras",
+          "gold": [
+            "Uma pessoa está desenhando algumas figuras",
+            "Uma pessoa está desenhando algumas figuras"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "nilc-nlp/assin2",
+          "input_lang": "pt",
+          "output_lang": "pt",
+          "script_expected": "latin"
+        },
+        {
+          "id": "pt_ext_8",
+          "instruction": "Parafraseie esta frase naturalmente em português. Retorne APENAS a frase parafraseada.",
+          "input": "Alguém está despejando ingredientes em uma panela",
+          "gold": [
+            "Alguém está adicionando ingredientes em uma panela",
+            "Alguém está adicionando ingredientes em uma panela"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "nilc-nlp/assin2",
+          "input_lang": "pt",
+          "output_lang": "pt",
+          "script_expected": "latin"
+        },
+        {
+          "id": "pt_ext_9",
+          "instruction": "Parafraseie esta frase naturalmente em português. Retorne APENAS a frase parafraseada.",
+          "input": "Um jogador de futebol de campo está marcando um gol",
+          "gold": [
+            "Um jogador de futebol está marcando um gol",
+            "Um jogador de futebol está marcando um gol"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "nilc-nlp/assin2",
+          "input_lang": "pt",
+          "output_lang": "pt",
+          "script_expected": "latin"
+        },
+        {
+          "id": "pt_ext_10",
+          "instruction": "Parafraseie esta frase naturalmente em português. Retorne APENAS a frase parafraseada.",
+          "input": "Um homem negro está andando perto de uma loja em uma cidade grande",
+          "gold": [
+            "Um homem negro está andando próximo a um prédio em uma grande cidade",
+            "Um homem negro está andando próximo a um prédio em uma grande cidade"
+          ],
+          "min_output_tokens": 5,
+          "already_correct": false,
+          "source": "nilc-nlp/assin2",
+          "input_lang": "pt",
+          "output_lang": "pt",
+          "script_expected": "latin"
         }
       ]
     }

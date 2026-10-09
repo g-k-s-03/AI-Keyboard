@@ -12,7 +12,10 @@ DATASET_PATH = Path(__file__).parent / "eval_dataset.json"
 #  sample count, streaming)
 DOWNLOAD_SPECS = [
     ("jhu-clsp/jfleg", None, "validation", "english_grammar", "en_ext", 50, False),
-    ("nilc-nlp/assin2", None, "validation", "portuguese_correction", "pt_ext", 10, False),
+    # ASSIN2 is semantic-similarity/entailment data (premise/hypothesis pairs
+    # describing the same scene), not grammar errors -- it belongs in its
+    # own paraphrase category, not portuguese_correction.
+    ("nilc-nlp/assin2", None, "validation", "portuguese_paraphrase", "pt_ext", 10, False),
     ("findnitai/english-to-hinglish", None, "train", "hinglish_to_english", "hi_ext", 10, False),
     ("martinsr/wi_locness", None, "train", "english_grammar", "en_wi_ext", 30, False),
     # google-research-datasets/tydiqa has no Hindi rows at all (its 11 languages
@@ -27,6 +30,7 @@ HINDI_SNIPPET_LEN = 80
 CATEGORY_LANG_META = {
     "english_grammar": {"input_lang": "en", "output_lang": "en", "script_expected": "latin"},
     "portuguese_correction": {"input_lang": "pt", "output_lang": "pt", "script_expected": "latin"},
+    "portuguese_paraphrase": {"input_lang": "pt", "output_lang": "pt", "script_expected": "latin"},
     "hinglish_to_english": {"input_lang": "hi-Latn", "output_lang": "en", "script_expected": "latin"},
     "hindi_keyboard": {"input_lang": "hi", "output_lang": "hi", "script_expected": "devanagari"},
 }
@@ -125,12 +129,12 @@ def _build_wi_locness_prompts(ds, n, prefix):
 
 
 def _build_assin2_prompts(ds, n, prefix):
-    lang_meta = CATEGORY_LANG_META["portuguese_correction"]
+    lang_meta = CATEGORY_LANG_META["portuguese_paraphrase"]
     prompts = []
     for i, row in enumerate(ds.select(range(min(n, len(ds))))):
         prompts.append({
             "id": f"{prefix}_{i + 1}",
-            "instruction": "Corrija o português nesta frase.",
+            "instruction": "Parafraseie esta frase naturalmente em português. Retorne APENAS a frase parafraseada.",
             "input": row["premise"],
             "gold": _pair([row["hypothesis"], row["hypothesis"]]),
             "min_output_tokens": 5,

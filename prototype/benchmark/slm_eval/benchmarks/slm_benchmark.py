@@ -25,7 +25,7 @@ SYSTEM_PROMPT = (
 LANG_TO_CATEGORIES = {
     "hinglish": ["hinglish_to_english", "error_correction"],
     "hindi": ["hindi_correction"],
-    "portuguese": ["portuguese_correction"],
+    "portuguese": ["portuguese_correction", "portuguese_paraphrase"],
     "russian": ["russian_correction"],
     "english": ["english_grammar", "professional_rewrite",
                 "meaning_preservation", "protected_tokens"],
