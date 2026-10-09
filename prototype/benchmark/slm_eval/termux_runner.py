@@ -196,15 +196,22 @@ def run_termux_benchmark(
     bleu_scores = []
     chrf_scores = []
     successes = []
+    ms_per_token_values = []
     timed_out_count = 0
 
     for prompt in prompts:
+        prompt_start = time.perf_counter()
         prompt_text = build_prompt(
             tokenizer, SYSTEM_PROMPT, prompt["instruction"], prompt["input"]
         )
+
+        prefill_start = time.perf_counter()
         input_ids = tokenizer(prompt_text, return_tensors="pt")["input_ids"]
+        input_ids = input_ids.to(model.device)
+        prefill_ms = round((time.perf_counter() - prefill_start) * 1000)
 
         def _generate():
+            gen_start = time.perf_counter()
             with torch.no_grad():
                 output = model.generate(
                     input_ids,
@@ -212,12 +219,14 @@ def run_termux_benchmark(
                     do_sample=False,
                     pad_token_id=tokenizer.pad_token_id or 0,
                 )
+            gen_ms = round((time.perf_counter() - gen_start) * 1000)
+            tokens_generated = output.shape[1] - input_ids.shape[1]
             new_tokens = output[0][input_ids.shape[1]:]
-            return tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
+            text = tokenizer.decode(new_tokens, skip_special_tokens=True).strip()
+            return text, gen_ms, tokens_generated
 
-        start = time.perf_counter()
-        raw_output, timed_out = _run_with_timeout(_generate, timeout_per_prompt)
-        latency_ms = round((time.perf_counter() - start) * 1000)
+        gen_result, timed_out = _run_with_timeout(_generate, timeout_per_prompt)
+        latency_ms = round((time.perf_counter() - prompt_start) * 1000)
 
         if timed_out:
             timed_out_count += 1
@@ -227,9 +236,16 @@ def run_termux_benchmark(
                 "input": prompt["input"],
                 "error": f"timed out after {timeout_per_prompt}s",
                 "latency_ms": latency_ms,
+                "prefill_ms": prefill_ms,
+                "gen_ms": None,
+                "tokens_generated": None,
+                "ms_per_token": None,
                 "timed_out": True,
             })
             continue
+
+        raw_output, gen_ms, tokens_generated = gen_result
+        ms_per_token = round(gen_ms / tokens_generated, 2) if tokens_generated > 0 else 0.0
 
         output = sanitize_output(raw_output or "")
         metrics = calculate_all_metrics(output, prompt["gold"], prompt["category_id"])
@@ -239,6 +255,7 @@ def run_termux_benchmark(
         bleu_scores.append(metrics["bleu"])
         chrf_scores.append(metrics["chrf"])
         successes.append(validation["task_success"])
+        ms_per_token_values.append(ms_per_token)
 
         results.append({
             "prompt_id": prompt["id"],
@@ -249,6 +266,10 @@ def run_termux_benchmark(
             "metrics": metrics,
             "validation": validation,
             "latency_ms": latency_ms,
+            "prefill_ms": prefill_ms,
+            "gen_ms": gen_ms,
+            "tokens_generated": tokens_generated,
+            "ms_per_token": ms_per_token,
             "timed_out": False,
         })
 
@@ -257,12 +278,29 @@ def run_termux_benchmark(
     p50 = sorted_latencies[len(sorted_latencies) // 2] if sorted_latencies else 0
     p95 = sorted_latencies[int(len(sorted_latencies) * 0.95)] if sorted_latencies else 0
 
+    sorted_ms_per_token = sorted(ms_per_token_values)
+    avg_ms_per_token = (
+        round(sum(sorted_ms_per_token) / len(sorted_ms_per_token), 2)
+        if sorted_ms_per_token else 0.0
+    )
+    p50_ms_per_token = (
+        sorted_ms_per_token[len(sorted_ms_per_token) // 2]
+        if sorted_ms_per_token else 0.0
+    )
+    p95_ms_per_token = (
+        sorted_ms_per_token[int(len(sorted_ms_per_token) * 0.95)]
+        if sorted_ms_per_token else 0.0
+    )
+
     summary = {
         "bleu": round(sum(bleu_scores) / len(bleu_scores), 2) if bleu_scores else 0,
         "chrf": round(sum(chrf_scores) / len(chrf_scores), 2) if chrf_scores else 0,
         "task_success_rate": round(sum(successes) / len(successes) * 100, 1) if successes else 0,
         "p50_latency_ms": p50,
         "p95_latency_ms": p95,
+        "avg_ms_per_token": avg_ms_per_token,
+        "p50_ms_per_token": p50_ms_per_token,
+        "p95_ms_per_token": p95_ms_per_token,
         "total_time_s": total_time_s,
         "prompts_timed_out": timed_out_count,
     }
@@ -281,8 +319,32 @@ def run_termux_benchmark(
         json.dump(result, f, indent=2, ensure_ascii=False)
         f.write("\n")
 
+    _print_results_table(result)
     _print_summary_table(result)
     return result
+
+
+def _print_results_table(result: dict):
+    header = f"{'Prompt':<16}{'Latency(ms)':>12}{'Prefill(ms)':>12}{'Gen(ms)':>10}{'ms/tok':>10}{'Success':>9}"
+    print()
+    print(header)
+    print("-" * len(header))
+    for r in result["per_prompt_results"]:
+        if r.get("timed_out"):
+            print(
+                f"{r['prompt_id']:<16}{r.get('latency_ms', 0):>12}"
+                f"{r.get('prefill_ms', 0):>12}{'--':>10}{'--':>10}{'TIMEOUT':>9}"
+            )
+            continue
+        success = r.get("validation", {}).get("task_success", False)
+        print(
+            f"{r['prompt_id']:<16}"
+            f"{r.get('latency_ms', 0):>12}"
+            f"{r.get('prefill_ms', 0):>12}"
+            f"{r.get('gen_ms', 0):>10}"
+            f"{r.get('ms_per_token', 0):>10.2f}"
+            f"{str(success):>9}"
+        )
 
 
 def _print_summary_table(result: dict):
@@ -300,6 +362,9 @@ def _print_summary_table(result: dict):
     print(f"Total time:     {s['total_time_s']}s")
     print(f"P50 latency:    {s['p50_latency_ms']}ms")
     print(f"P95 latency:    {s['p95_latency_ms']}ms")
+    print(f"Avg ms/token:   {s['avg_ms_per_token']}ms")
+    print(f"P50 ms/token:   {s['p50_ms_per_token']}ms")
+    print(f"P95 ms/token:   {s['p95_ms_per_token']}ms")
     print(f"BLEU:           {s['bleu']}")
     print(f"chrF:           {s['chrf']}")
     print(f"Task success:   {s['task_success_rate']}%")
