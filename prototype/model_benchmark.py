@@ -42,21 +42,35 @@ except ImportError:
 # ---------------------------------------------------------------------------
 
 # Each entry may list multiple candidate repo ids. The first one that loads
-# successfully is used and recorded as `resolved_model_id`. This is needed
-# because "Qwen3.5-0.8B" is not a confirmed/published HuggingFace repo id at
-# the time of writing -- if it does not exist or is gated, the benchmark
-# falls back to the next candidate instead of crashing the whole run.
+# successfully is used and recorded as `resolved_model_id`, so a candidate
+# that turns out to be gated, renamed, or (as with Qwen/Qwen3.5-0.8B, which
+# is multimodal image-text-to-text, not a plain CausalLM) architecturally
+# incompatible with load_model() falls back to the next one instead of
+# crashing the whole run.
 MODEL_CONFIGS = [
     {
-        "label": "Qwen2.5-0.5B-Instruct",
+        "label": "Qwen2.5-0.5B",
         "candidates": ["Qwen/Qwen2.5-0.5B-Instruct"],
     },
     {
-        "label": "Qwen3.5-0.8B",
-        "candidates": [
-            "Qwen/Qwen3.5-0.8B",
-            "Qwen/Qwen3-0.6B",  # closest published Qwen3-series fallback
-        ],
+        "label": "Qwen3-0.6B",
+        "candidates": ["Qwen/Qwen3-0.6B"],
+    },
+    {
+        "label": "Qwen2.5-1.5B",
+        "candidates": ["Qwen/Qwen2.5-1.5B-Instruct"],
+    },
+    {
+        "label": "InternLM2.5-1.8B",
+        "candidates": ["internlm/internlm2_5-1_8b-chat"],
+    },
+    {
+        "label": "SmolLM2-1.7B",
+        "candidates": ["HuggingFaceTB/SmolLM2-1.7B-Instruct"],
+    },
+    {
+        "label": "MobileLLaMA-1.4B",
+        "candidates": ["mtgv/MobileLLaMA-1.4B-Chat"],
     },
 ]
 
