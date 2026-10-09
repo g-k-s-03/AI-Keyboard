@@ -175,6 +175,8 @@ def test(model, lang, device_name, runs, warmup, max_new_tokens, output_dir, cat
     table.add_column("Category", style="cyan")
     table.add_column("BLEU", style="green")
     table.add_column("chrF", style="blue")
+    table.add_column("GLEU", style="green")
+    table.add_column("WER", style="red")
     table.add_column("Success%", style="magenta")
 
     for cat, metrics in result["per_category_metrics"].items():
@@ -182,12 +184,16 @@ def test(model, lang, device_name, runs, warmup, max_new_tokens, output_dir, cat
             cat,
             f"{metrics['avg_bleu']:.1f}",
             f"{metrics['avg_chrf']:.1f}",
+            f"{metrics['avg_gleu']:.1f}",
+            f"{metrics['avg_wer']:.2f}",
             f"{metrics['success_rate']:.0f}%",
         )
     table.add_row(
         "[bold]OVERALL[/bold]",
         f"[bold]{result['avg_bleu']:.1f}[/bold]",
         f"[bold]{result['avg_chrf']:.1f}[/bold]",
+        f"[bold]{result['avg_gleu']:.1f}[/bold]",
+        f"[bold]{result['avg_wer']:.2f}[/bold]",
         f"[bold]{result['task_success_rate']:.0f}%[/bold]",
     )
     console.print(table)

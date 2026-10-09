@@ -1,5 +1,8 @@
 import sacrebleu
 
+from slm_eval.metrics.gleu import calculate_gleu
+from slm_eval.metrics.wer import calculate_wer_against_references
+
 LANG_BLEU_TOKENIZER = {
     "hinglish_to_english": "13a",
     "english_grammar": "13a",
@@ -85,4 +88,6 @@ def calculate_all_metrics(hypothesis: str, gold_references: list, category: str)
         "chrf": calculate_chrf(hypothesis, gold_references),
         "rouge": calculate_rouge(hypothesis, gold_references, category),
         "exact_match": calculate_exact_match(hypothesis, gold_references),
+        "gleu": calculate_gleu(hypothesis, gold_references),
+        "wer": calculate_wer_against_references(hypothesis, gold_references),
     }

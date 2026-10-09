@@ -1,6 +1,8 @@
 from slm_eval.metrics.bleu import (
     calculate_bleu, calculate_chrf, calculate_exact_match,
 )
+from slm_eval.metrics.gleu import calculate_gleu
+from slm_eval.metrics.wer import calculate_wer
 from slm_eval.utils.reproducibility import get_benchmark_env
 from slm_eval.validation.output_validator import sanitize_output, validate_output
 
@@ -77,3 +79,23 @@ def test_get_benchmark_env_keys():
     assert isinstance(env, dict)
     for key in ("python_version", "torch_version", "transformers_version", "platform"):
         assert key in env
+
+
+def test_gleu_perfect():
+    assert calculate_gleu("the cat sat on the mat", ["the cat sat on the mat"]) == 100.0
+
+
+def test_gleu_empty():
+    assert calculate_gleu("", ["the cat sat"]) == 0.0
+
+
+def test_wer_perfect():
+    assert calculate_wer("the cat sat", "the cat sat") == 0.0
+
+
+def test_wer_one_substitution():
+    assert calculate_wer("the dog sat", "the cat sat") == 1 / 3
+
+
+def test_wer_empty_hypothesis():
+    assert calculate_wer("", "the cat sat") == 1.0

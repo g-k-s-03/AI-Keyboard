@@ -109,6 +109,8 @@ def run_slm_benchmark(
     results = []
     all_bleu = []
     all_chrf = []
+    all_gleu = []
+    all_wer = []
     all_latencies = []
     all_success = []
 
@@ -156,6 +158,8 @@ def run_slm_benchmark(
 
                 all_bleu.append(metrics["bleu"])
                 all_chrf.append(metrics["chrf"])
+                all_gleu.append(metrics["gleu"])
+                all_wer.append(metrics["wer"])
                 all_latencies.append(avg_ms)
                 all_success.append(validation["task_success"])
 
@@ -196,10 +200,12 @@ def run_slm_benchmark(
     for r in results:
         cat = r.get("category", "unknown")
         if cat not in per_category:
-            per_category[cat] = {"bleu": [], "chrf": [], "success": []}
+            per_category[cat] = {"bleu": [], "chrf": [], "gleu": [], "wer": [], "success": []}
         if "metrics" in r:
             per_category[cat]["bleu"].append(r["metrics"].get("bleu", 0))
             per_category[cat]["chrf"].append(r["metrics"].get("chrf", 0))
+            per_category[cat]["gleu"].append(r["metrics"].get("gleu", 0))
+            per_category[cat]["wer"].append(r["metrics"].get("wer", 0))
         if "validation" in r:
             per_category[cat]["success"].append(
                 r["validation"].get("task_success", False)
@@ -215,6 +221,8 @@ def run_slm_benchmark(
         "total_prompts": len(prompts),
         "avg_bleu": round(sum(all_bleu) / len(all_bleu), 2) if all_bleu else 0,
         "avg_chrf": round(sum(all_chrf) / len(all_chrf), 2) if all_chrf else 0,
+        "avg_gleu": round(sum(all_gleu) / len(all_gleu), 2) if all_gleu else 0,
+        "avg_wer": round(sum(all_wer) / len(all_wer), 4) if all_wer else 0,
         "avg_latency_ms": round(sum(all_latencies) / len(all_latencies)) if all_latencies else 0,
         "task_success_rate": round(
             sum(all_success) / len(all_success) * 100, 1
@@ -223,6 +231,8 @@ def run_slm_benchmark(
             cat: {
                 "avg_bleu": round(sum(v["bleu"]) / len(v["bleu"]), 2) if v["bleu"] else 0,
                 "avg_chrf": round(sum(v["chrf"]) / len(v["chrf"]), 2) if v["chrf"] else 0,
+                "avg_gleu": round(sum(v["gleu"]) / len(v["gleu"]), 2) if v["gleu"] else 0,
+                "avg_wer": round(sum(v["wer"]) / len(v["wer"]), 4) if v["wer"] else 0,
                 "success_rate": round(
                     sum(v["success"]) / len(v["success"]) * 100, 1
                 ) if v["success"] else 0,
