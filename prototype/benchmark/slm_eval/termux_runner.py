@@ -14,10 +14,18 @@ import platform
 import signal
 import subprocess
 import time
+from pathlib import Path
 
 import torch
 
-from slm_eval.benchmarks.slm_benchmark import SYSTEM_PROMPT, load_dataset
+from slm_eval.benchmarks.slm_benchmark import (
+    RECOMMENDED_MODELS,
+    SYSTEM_PROMPT,
+    load_dataset,
+    model_label,
+    print_comparison_table,
+    prompt_model_selection,
+)
 from slm_eval.metrics.bleu import calculate_all_metrics
 from slm_eval.metrics.device_metrics import get_ram_usage_mb
 from slm_eval.models.loader import build_prompt
@@ -177,6 +185,7 @@ def run_termux_benchmark(
     timeout_per_prompt: int = 60,
     max_new_tokens: int = 100,
     output_path: str = "termux_results.json",
+    print_tables: bool = True,
 ) -> dict:
     set_seed()
     device_info = get_device_info()
@@ -195,6 +204,8 @@ def run_termux_benchmark(
     latencies = []
     bleu_scores = []
     chrf_scores = []
+    gleu_scores = []
+    wer_scores = []
     successes = []
     ms_per_token_values = []
     timed_out_count = 0
@@ -254,6 +265,8 @@ def run_termux_benchmark(
         latencies.append(latency_ms)
         bleu_scores.append(metrics["bleu"])
         chrf_scores.append(metrics["chrf"])
+        gleu_scores.append(metrics["gleu"])
+        wer_scores.append(metrics["wer"])
         successes.append(validation["task_success"])
         ms_per_token_values.append(ms_per_token)
 
@@ -295,6 +308,8 @@ def run_termux_benchmark(
     summary = {
         "bleu": round(sum(bleu_scores) / len(bleu_scores), 2) if bleu_scores else 0,
         "chrf": round(sum(chrf_scores) / len(chrf_scores), 2) if chrf_scores else 0,
+        "gleu": round(sum(gleu_scores) / len(gleu_scores), 2) if gleu_scores else 0,
+        "wer": round(sum(wer_scores) / len(wer_scores), 4) if wer_scores else 0,
         "task_success_rate": round(sum(successes) / len(successes) * 100, 1) if successes else 0,
         "p50_latency_ms": p50,
         "p95_latency_ms": p95,
@@ -319,8 +334,9 @@ def run_termux_benchmark(
         json.dump(result, f, indent=2, ensure_ascii=False)
         f.write("\n")
 
-    _print_results_table(result)
-    _print_summary_table(result)
+    if print_tables:
+        _print_results_table(result)
+        _print_summary_table(result)
     return result
 
 
@@ -367,17 +383,71 @@ def _print_summary_table(result: dict):
     print(f"P95 ms/token:   {s['p95_ms_per_token']}ms")
     print(f"BLEU:           {s['bleu']}")
     print(f"chrF:           {s['chrf']}")
+    print(f"GLEU:           {s['gleu']}")
+    print(f"WER:            {s['wer']}")
     print(f"Task success:   {s['task_success_rate']}%")
     print(f"Timed out:      {s['prompts_timed_out']} prompts")
     print("=" * 44)
     print()
 
 
+def run_all_models_termux(
+    category_filter: str = None,
+    timeout_per_prompt: int = 60,
+    max_new_tokens: int = 100,
+    output_dir: str = "results",
+) -> dict:
+    """Run every model in RECOMMENDED_MODELS, saving each model's full
+    result to <output_dir>/<label>_results.json and a combined summary
+    to <output_dir>/all_models_comparison.json."""
+    out_path = Path(output_dir)
+    out_path.mkdir(parents=True, exist_ok=True)
+
+    summaries = []
+    for model_id in RECOMMENDED_MODELS:
+        label = model_label(model_id)
+        print(f"\n--- Running {label} ({model_id}) ---")
+        per_model_path = str(out_path / f"{label}_results.json")
+        result = run_termux_benchmark(
+            model_id,
+            category_filter=category_filter,
+            timeout_per_prompt=timeout_per_prompt,
+            max_new_tokens=max_new_tokens,
+            output_path=per_model_path,
+            print_tables=False,
+        )
+        s = result["summary"]
+        summaries.append({
+            "model_id": model_id,
+            "label": label,
+            "avg_bleu": s["bleu"],
+            "avg_chrf": s["chrf"],
+            "avg_gleu": s["gleu"],
+            "avg_wer": s["wer"],
+            "task_success_rate": s["task_success_rate"],
+            "avg_ms_per_token": s["avg_ms_per_token"],
+        })
+
+    combined_path = str(out_path / "all_models_comparison.json")
+    with open(combined_path, "w", encoding="utf-8") as f:
+        json.dump(summaries, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+
+    print_comparison_table(summaries, title="All-Models Comparison (Termux/Mobile)")
+    print(f"Saved combined comparison: {combined_path}")
+
+    return {"summaries": summaries, "combined_path": combined_path}
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Termux/Android-friendly SLM benchmark runner"
     )
-    parser.add_argument("--model", required=True, help="HuggingFace model ID")
+    parser.add_argument("--model", default=None, help="HuggingFace model ID")
+    parser.add_argument(
+        "--all-models", action="store_true", dest="all_models",
+        help="Run every model in RECOMMENDED_MODELS",
+    )
     parser.add_argument("--category", default=None, help="Restrict to one dataset category id")
     parser.add_argument(
         "--timeout-per-prompt", type=int, default=60, dest="timeout_per_prompt",
@@ -387,7 +457,33 @@ def main():
         "--max-new-tokens", type=int, default=100, dest="max_new_tokens",
     )
     parser.add_argument("--output", default="termux_results.json")
+    parser.add_argument(
+        "--output-dir", default="results",
+        help="Directory for --all-models per-model and combined results",
+    )
     args = parser.parse_args()
+
+    if not args.model and not args.all_models:
+        selection = prompt_model_selection()
+        if selection is None:
+            parser.error(
+                "No model specified. Pass --model <hf-id> or --all-models "
+                "(interactive selection requires a terminal)."
+            )
+        kind, value = selection
+        if kind == "all":
+            args.all_models = True
+        else:
+            args.model = value
+
+    if args.all_models:
+        run_all_models_termux(
+            category_filter=args.category,
+            timeout_per_prompt=args.timeout_per_prompt,
+            max_new_tokens=args.max_new_tokens,
+            output_dir=args.output_dir,
+        )
+        return
 
     run_termux_benchmark(
         args.model,

@@ -121,7 +121,7 @@ def dataset():
 
 
 @main.command()
-@click.option("--model", required=True, help="HuggingFace model ID")
+@click.option("--model", default=None, help="HuggingFace model ID")
 @click.option("--lang", default="all",
               type=click.Choice(["all", "hindi", "english", "portuguese", "russian", "hinglish"]),
               help="Language filter")
@@ -132,12 +132,83 @@ def dataset():
 @click.option("--output-dir", default="results")
 @click.option("--category", default=None, help="Restrict to a single dataset category id")
 @click.option("--verbose", is_flag=True, default=False, help="Print input/output/gold per prompt")
-def test(model, lang, device_name, runs, warmup, max_new_tokens, output_dir, category, verbose):
-    """Test a single model on the benchmark dataset."""
+@click.option("--all-models", is_flag=True, default=False, help="Run every model in RECOMMENDED_MODELS")
+@click.option("--input-text", default=None, help="Run on this text instead of the dataset")
+@click.option("--input-file", default=None, type=click.Path(exists=True, dir_okay=False),
+              help="Run on each non-empty line of this file instead of the dataset")
+def test(model, lang, device_name, runs, warmup, max_new_tokens, output_dir, category, verbose,
+         all_models, input_text, input_file):
+    """Test a model on the benchmark dataset (or custom input)."""
     from slm_eval.metrics.device_metrics import get_device_info
-    from slm_eval.benchmarks.slm_benchmark import run_slm_benchmark
+    from slm_eval.benchmarks.slm_benchmark import (
+        RECOMMENDED_MODELS,
+        prompt_model_selection,
+        print_comparison_table,
+        run_all_models_benchmark,
+        run_custom_inputs,
+        run_slm_benchmark,
+    )
     from slm_eval.reporters.csv_reporter import save_csv
     from slm_eval.reporters.json_reporter import save_json
+
+    if input_text and input_file:
+        raise click.UsageError("--input-text and --input-file are mutually exclusive.")
+
+    if input_text or input_file:
+        if not model:
+            raise click.UsageError("--model is required when using --input-text/--input-file.")
+
+        if input_text:
+            texts = [input_text]
+        else:
+            with open(input_file, encoding="utf-8") as f:
+                texts = [line.strip() for line in f if line.strip()]
+            if not texts:
+                raise click.UsageError(f"No non-empty lines found in {input_file}.")
+
+        console.print(f"\n[bold cyan]SLM Eval[/bold cyan] - Custom input on [yellow]{model}[/yellow]")
+        with console.status(f"Running {model} on {len(texts)} input(s)..."):
+            result = run_custom_inputs(model, texts, max_new_tokens=max_new_tokens)
+
+        if "error" in result:
+            console.print(f"[red]Error: {result['error']}[/red]")
+            return
+
+        if len(texts) == 1:
+            console.print(f"\n[green]Output:[/green] {result['outputs'][0]}")
+        else:
+            console.print()
+            for i, (inp, out) in enumerate(zip(result["inputs"], result["outputs"]), start=1):
+                console.print(f"[dim]{i}. Input:[/dim]  {inp}")
+                console.print(f"   [green]Output:[/green] {out}\n")
+        return
+
+    if not model and not all_models:
+        selection = prompt_model_selection()
+        if selection is None:
+            raise click.UsageError(
+                "No model specified. Pass --model <hf-id> or --all-models "
+                "(interactive selection requires a terminal)."
+            )
+        kind, value = selection
+        if kind == "all":
+            all_models = True
+        else:
+            model = value
+
+    if all_models:
+        console.print(f"\n[bold cyan]SLM Eval[/bold cyan] - Running {len(RECOMMENDED_MODELS)} models in sequence\n")
+        outcome = run_all_models_benchmark(
+            lang_filter=lang,
+            category_filter=category,
+            runs=runs,
+            warmup_runs=warmup,
+            max_new_tokens=max_new_tokens,
+            device_name=device_name,
+            output_dir=output_dir,
+        )
+        console.print(f"[green]Saved combined comparison:[/green] {outcome['combined_path']}")
+        return
 
     console.print(f"\n[bold cyan]SLM Eval[/bold cyan] - Testing [yellow]{model}[/yellow]")
     device = get_device_info(device_name)
