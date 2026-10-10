@@ -186,6 +186,7 @@ def run_termux_benchmark(
     max_new_tokens: int = 100,
     output_path: str = "termux_results.json",
     print_tables: bool = True,
+    max_prompts: int = None,
 ) -> dict:
     set_seed()
     device_info = get_device_info()
@@ -193,6 +194,8 @@ def run_termux_benchmark(
     prompts = load_dataset(lang_filter="all", category_filter=category_filter)
     if not prompts:
         raise SystemExit(f"No prompts found for category '{category_filter}'")
+    if max_prompts is not None:
+        prompts = prompts[:max_prompts]
 
     start_total = time.perf_counter()
     ram_before = get_ram_usage_mb()
@@ -210,7 +213,9 @@ def run_termux_benchmark(
     ms_per_token_values = []
     timed_out_count = 0
 
-    for prompt in prompts:
+    total = len(prompts)
+    for i, prompt in enumerate(prompts):
+        print(f"Running prompt {i + 1}/{total} ({prompt['id']})...", flush=True)
         prompt_start = time.perf_counter()
         prompt_text = build_prompt(
             tokenizer, SYSTEM_PROMPT, prompt["instruction"], prompt["input"]
@@ -396,6 +401,7 @@ def run_all_models_termux(
     timeout_per_prompt: int = 60,
     max_new_tokens: int = 100,
     output_dir: str = "results",
+    max_prompts: int = None,
 ) -> dict:
     """Run every model in RECOMMENDED_MODELS, saving each model's full
     result to <output_dir>/<label>_results.json and a combined summary
@@ -415,6 +421,7 @@ def run_all_models_termux(
             max_new_tokens=max_new_tokens,
             output_path=per_model_path,
             print_tables=False,
+            max_prompts=max_prompts,
         )
         s = result["summary"]
         summaries.append({
@@ -461,6 +468,10 @@ def main():
         "--output-dir", default="results",
         help="Directory for --all-models per-model and combined results",
     )
+    parser.add_argument(
+        "--max-prompts", type=int, default=None, dest="max_prompts",
+        help="Only run the first N prompts (useful for a quick smoke test)",
+    )
     args = parser.parse_args()
 
     if not args.model and not args.all_models:
@@ -482,6 +493,7 @@ def main():
             timeout_per_prompt=args.timeout_per_prompt,
             max_new_tokens=args.max_new_tokens,
             output_dir=args.output_dir,
+            max_prompts=args.max_prompts,
         )
         return
 
@@ -491,6 +503,7 @@ def main():
         timeout_per_prompt=args.timeout_per_prompt,
         max_new_tokens=args.max_new_tokens,
         output_path=args.output,
+        max_prompts=args.max_prompts,
     )
 
 

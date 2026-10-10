@@ -1,6 +1,10 @@
 import os
 import platform
-import psutil
+
+try:
+    import psutil
+except ImportError:
+    psutil = None
 
 
 def get_device_info(device_name: str = "unknown") -> dict:
@@ -52,6 +56,8 @@ def get_device_info(device_name: str = "unknown") -> dict:
 
 
 def get_ram_usage_mb() -> float:
+    if psutil is None:
+        return 0.0
     return psutil.Process(os.getpid()).memory_info().rss / (1024 ** 2)
 
 
